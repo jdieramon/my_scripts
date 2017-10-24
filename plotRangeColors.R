@@ -3,6 +3,9 @@
 # Distributed under terms of the MIT license.
 
 
+## You may want to read a detailed tutorial on this function on Rpubs: 
+## http://rpubs.com/JoseVDie/322171
+
 # Date = date()
 rm(list=ls())
 
