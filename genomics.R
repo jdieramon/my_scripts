@@ -1,3 +1,7 @@
+# genomics.R -- a set of the most common functions that I use during my genomics analyses
+# Copyright (C) 2017 Jose V. Die  <jodiera@upv.es>
+# Distributed under terms of the MIT license.
+
 ## Define function to get the two variants from a heterozigous SNP
 
 snp_variants <- function(dna) {
