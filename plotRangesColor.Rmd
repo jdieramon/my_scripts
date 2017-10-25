@@ -1,0 +1,192 @@
+---
+title: "plotRangesColor"
+author: "Jose V. Die"
+date: "10/24/2017"
+output:
+  html_document: 
+    keep_md: yes
+  pdf_document: default
+---
+<br> 
+In this tutorial I describe how to represent IRanges object using different colors. 
+For example, you may want to show the exons of a given gene with color1, and on 
+top of the exons the forward and reverse primer sequences designed to amplify a 
+specific amplicon with color2. 
+
+
+In this this tutorial I use gene and primer sequences, which are described in 
+our 2017 PLOS ONE [paper](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0172674).    
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Set the working directory
+```{r dir}
+if(!file.exists("./data")){dir.create("./data")}
+setwd("./data")
+```
+
+### Dependencies
+```{r depend, message=FALSE, warning=FALSE}
+library(IRanges)
+```
+
+### Load functions
+You can find the original funcion `plotRanges` under the [Genomics Class](https://github.com/genomicsclass/ph525x/blob/master/R/plotRanges.R) repo on 
+Github. 
+```{r load plotRanges, echo = FALSE}
+plotRanges <- function(x, xlim = x, main = deparse(substitute(x)),
+                       col = "black", sep = 0.5, ...)
+{
+  height <- 1
+  if (is(xlim, "Ranges"))
+    xlim <- c(min(start(xlim)), max(end(xlim)))
+  bins <- disjointBins(IRanges(start(x), end(x) + 1))
+  plot.new()
+  plot.window(xlim, c(0, max(bins)*(height + sep)))
+  ybottom <- bins * (sep + height) - height
+  rect(start(x)-0.5, ybottom, end(x)+0.5, ybottom + height, col = col, ...)
+  title(main)
+  axis(1)
+}
+```
+
+---
+
+## Example 1
+**IRanges object contains both, gene and primer coordinates.**  
+We work with the *Bos taurus* peptidylprolyl isomerase B (*PPIB). It is a 5 exons gene on chromosome 10. We can get the coordinates from the accession 
+site at [NCBI](https://www.ncbi.nlm.nih.gov/gene?cmd=Retrieve&dopt=full_report&list_uids=281419).   
+
+We can create an IRanges object with those coordinates and the postion of primer 
+to meassure the gene expression level by qPCR. 
+
+```{r}
+PPIB <- IRanges(start=c(15,808,1571,4643,5574, 4806, 5617),
+                end=c(125,921,1664,4827,5696, 4825, 5636), 
+                names=c("exon1", "exon2", "exon3", "exon4", "exon5",
+                        "Forward", "Reverse"))
+PPIB
+```
+
+Plot the IRanges object using the `plotRanges` function. 
+```{r plot Ranges, echo=FALSE}
+plotRanges(PPIB, xlim=c(0,5906), main="PPIB")
+```
+
+Our goal is to color the primer sequences.    
+We create a vector that indexes the IRanges object containing the primer.   
+In this example, the primer is named as "Forward" and "Reverse".  The indexes are  
+captured by the function `color_ind`. 
+```{r}
+target <- c("Forward", "Reverse")
+
+color_ind <- function(ir, target) {
+  val <- which(names(ir) %in% target)
+  val
+}
+
+color_ind(PPIB, target)
+```
+
+Next, we define a new function that reads the IRanges object and the color_ind output. 
+This function returns a vector with the colors to be used by the plotting function.
+```{r}
+
+getColor <- function(ir, ind, color1, color2) {
+  
+  color_output <- vector("double", length(ir))
+  
+  for(i in seq(length(ir))) {
+    if(i %in% ind) {
+      color_output[i] = color2}
+    else {color_output[i] = color1}
+  }
+  color_output
+  
+}
+
+# Call the function. 
+# In the example, the exons will be shown in color1, while the primer will be represented 
+# using color2.
+c_ind <- color_ind(PPIB, target)
+color = getColor(PPIB, c_ind, 1, 2)
+```
+
+Finally, we modify the `plotRanges` function to color the selected ranges. 
+```{r plotRangesColor}
+
+plotRangesColor <- function(x, xlim = x, main = deparse(substitute(x)),
+                       col = color, ## modified
+                       sep = 0.5, ...)
+{
+  height <- 1
+  if (is(xlim, "Ranges"))
+    xlim <- c(min(start(xlim)), max(end(xlim)))
+  bins <- disjointBins(IRanges(start(x), end(x) + 1))
+  plot.new()
+  plot.window(xlim, c(0, max(bins)*(height + sep)))
+  ybottom <- bins * (sep + height) - height
+  rect(start(x)-0.5, ybottom, end(x)+0.5, ybottom + height, col = col, 
+       border = col, ...)   ## modified
+  title(main)
+  axis(1)
+  par(las = 1)
+}
+```
+
+Call the `plotRangesColor`. 
+```{r}
+plotRangesColor(PPIB, col = color, xlim=c(0,5906), main="PPIB")
+```
+
+---  
+
+## Example 2
+**Gene and primer coordinates contained in two different IRanges objects.**  
+
+This example use the mRNA of the dysbindin domain containing gene (*DBNDD2*). It contains 
+3 exons and spans 1173 bp. You can take a look at the accession at [NCBI](
+https://www.ncbi.nlm.nih.gov/nuccore/195539544/). 
+
+```{r}
+DBNDD2 <- IRanges(start=c(1889,2217,3680), 
+                  end=c(2026,2354,3888), 
+                  names = c(paste(rep("exon"),1:3, sep="")))
+
+primer.DBNDD2 = IRanges(start=c(2270,2324), end=c(2289,2343),
+                        names = c("Forward", "Reverse"))
+```
+
+Now we have two IRAnges objects
+```{r}
+DBNDD2
+primer.DBNDD2
+```
+
+
+In this example, we have to create a sorted IRanges combaining both objects. Then, 
+the rest of the procedure is similar as Example1. 
+```{r}
+sort_ir <- sort(c(DBNDD2, primer.DBNDD2))
+sort_ir
+```
+
+Indexes for the ranges to color
+```{r}
+c_ind <- color_ind(sort_ir, names(primer.DBNDD2))
+c_ind
+```
+
+Assign color2 to those indexes
+```{r}
+color = getColor(sort_ir, c_ind, 1, 2)
+```
+
+Plot the IRAnges
+```{r}
+plotRangesColor(sort_ir, col = color, xlim=c(1500,4100), main="DBNDD2 (AC_000170)")
+```
+
+The code for this tutorial is available from my [Github](https://github.com/jdieramon/my-scripts/blob/master/plotRangeColors.R) repository. 
