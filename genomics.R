@@ -28,5 +28,31 @@ snp_variants <- function(dna) {
     return(variants)
 }
 
+## Usage:
 ## sequence = "TACCGTCC[G/A]GCCTTC"
 ## snp_variants(sequence)
+
+# Define a set of functions to convert RPM --> RFC and vice versa
+
+getRFC <- function(rpm, r) {
+  # ''' Return the RCF (g-force) '''
+  ## rpm, RPM to convert into RFC
+  ## r, radius (mm) of centrifuge rotor
+  
+  g = 1.12 * r * (rpm/1000)**2
+  g
+}
+
+
+getRPM <- function(rfc, r) {
+  # ''' Return the RPM '''
+  ## rfc, RFC (g-force) to convert into RPM
+  ## r, radius (mm) of centrifuge rotor
+  
+    rpm = sqrt(rfc/(1.12 * r))*1000
+  rpm
+}
+
+## Usage:
+## getRFC(1000, 60)
+## getRPM(7500, 60)
