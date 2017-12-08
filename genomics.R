@@ -109,3 +109,34 @@ accs_tidy <- function(blast, acc_type){
 ## ncbi = "2MW2NVF9014-Alignment-HitTable.csv"
 ## hit_table  <- read.csv(ncbi, header= FALSE)
 ## hits = accs_tidy(hit_table, acc_type = 'XP')
+
+
+##--------------------------------------------------------------------------------------------
+## Define function to subset a df with unique values from a column containing repetitions
+##--------------------------------------------------------------------------------------------
+
+df_wo_duplicates <- function(dataset, ncolDuplicates, ncolTarget) {
+    # Subset a data frame with unique values from a column containing repetitions
+    
+    ## dataset = dataset
+    ## ncolDuplicates = number of column containing duplicates 
+    ## ncolTarget = number of target column to extract values
+    
+    
+    # Get target values (unique values) to be extracted 
+    vals = c()
+    target = c()
+    for(i in 1:nrow(dataset)) {
+        if(!dataset[i,ncolDuplicates] %in% vals){
+            target = c(target, as.character(dataset[i, ncolTarget]))
+            vals = c(vals, as.character(dataset[i,ncolDuplicates]))
+        }
+    }
+    
+    # Subset df based on the target values  
+    return(subset.data.frame(dataset, dataset[,ncolTarget] %in% target))
+}
+
+## Usage
+# df_silly = read.csv("df_silly.csv")
+# df_wo_duplicates(df_silly, 2, 1)
