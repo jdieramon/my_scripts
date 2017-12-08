@@ -105,4 +105,7 @@ accs_tidy <- function(blast, acc_type){
     return(accessions)
 }
 
-
+## Usage
+## ncbi = "2MW2NVF9014-Alignment-HitTable.csv"
+## hit_table  <- read.csv(ncbi, header= FALSE)
+## hits = accs_tidy(hit_table, acc_type = 'XP')
