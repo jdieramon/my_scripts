@@ -2,7 +2,10 @@
 # Copyright (C) 2017 Jose V. Die  <jodiera@upv.es>
 # Distributed under terms of the MIT license.
 
+
+##------------------------------------------------------------------------------
 ## Define function to get the two variants from a heterozigous SNP
+##------------------------------------------------------------------------------
 
 snp_variants <- function(dna) {
     # remove special symbol []
@@ -32,7 +35,10 @@ snp_variants <- function(dna) {
 ## sequence = "TACCGTCC[G/A]GCCTTC"
 ## snp_variants(sequence)
 
-# Define a set of functions to convert RPM --> RFC and vice versa
+
+##------------------------------------------------------------------------------
+## Define a set of functions to convert RPM --> RFC and vice versa
+##------------------------------------------------------------------------------
 
 getRFC <- function(rpm, r) {
   # ''' Return the RCF (g-force) '''
@@ -56,3 +62,47 @@ getRPM <- function(rfc, r) {
 ## Usage:
 ## getRFC(1000, 60)
 ## getRPM(7500, 60)
+
+
+##----------------------------------------------------------------------------------------------
+## Define a function to extract the accession id from a table hit downloaded from Blast(NCBI) 
+## ---------------------------------------------------------------------------------------------
+
+accs_tidy <- function(blast, acc_type){
+    
+  ### ''' Take a csv table with Blast hits (downloaded from NCBI) and return a 
+  ### character vector containing the accessions id. in a tidy way '''
+  
+  ## blast, table hit
+  ## acc_type, 'XP' for XP-type accessions; 'XM' for XM-type accessions
+  
+    # Initialize the cleaning by selecting the column that contains the accession 
+    blast = hit_table[1:dim(hit_table)[1], 2] # column2
+    blast = levels(blast)
+    
+    ## First, we want to get 1 hit per entry. 
+    ## If >1 hit per entry, it splits by ";"
+    gi = c()
+    for(b in blast) {
+        if(grepl(";", b)) {                       # if >1hit/entry, it contains ";"
+            val  = (strsplit(b, ";"))             # split the entry by ";"
+            gi = c(gi, val[[1]][1], val[[1]][2])  # modify if the entry contains >2hits
+        }
+        else{gi = c(gi, b)}
+        
+    }
+    
+    ## Then, we get just the ID of the hit (index: 18-29)
+    accessions = c()
+    for (i in gi) {
+       
+      s = regexec(acc_type, i)[[1]][1]     # this always returns 18
+      acc = substr(i, start = s, 30)       # substring from 18-30
+      accessions = c(accessions, acc)
+    
+      }
+    
+    return(accessions)
+}
+
+
