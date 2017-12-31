@@ -4,7 +4,7 @@
 
 
 ##------------------------------------------------------------------------------
-## Define function to get the two variants from a heterozigous SNP
+## Get the two variants from a heterozigous SNP
 ##------------------------------------------------------------------------------
 
 snp_variants <- function(dna) {
@@ -37,7 +37,7 @@ snp_variants <- function(dna) {
 
 
 ##------------------------------------------------------------------------------
-## Define a set of functions to convert RPM --> RFC and vice versa
+## Convert RPM --> RFC and vice versa
 ##------------------------------------------------------------------------------
 
 getRFC <- function(rpm, r) {
@@ -63,9 +63,20 @@ getRPM <- function(rfc, r) {
 ## getRFC(1000, 60)
 ## getRPM(7500, 60)
 
+##------------------------------------------------------------------------------
+## Convert nanograms to copy number (standard curve qPCR)
+##------------------------------------------------------------------------------
+getCopies <- function(ng, amplicon_len) {
+    (ng * 6.0221e**23) / (amplicon_len * 660 * 1e**9)
+    }
+
+# ng = amount of amplicon
+# amplicon_len = length of amplicon
+# 660 g/mole = avg mass of 1 bp dsDNA
+
 
 ##----------------------------------------------------------------------------------------------
-## Define a function to extract the accession id from a table hit downloaded from Blast(NCBI) 
+## Extract the accession id from a table hit downloaded from Blast(NCBI) 
 ## ---------------------------------------------------------------------------------------------
 
 accs_tidy <- function(blast, acc_type){
@@ -112,7 +123,7 @@ accs_tidy <- function(blast, acc_type){
 
 
 ##--------------------------------------------------------------------------------------------
-## Define function to subset a df with unique values from a column containing repetitions
+## Subset a df with unique values from a column containing repetitions
 ##--------------------------------------------------------------------------------------------
 
 df_wo_duplicates <- function(dataset, ncolDuplicates, ncolTarget) {
