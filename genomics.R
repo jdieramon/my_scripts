@@ -1,5 +1,5 @@
 # genomics.R -- a set of the most common functions that I use in my genomics analyses
-# Copyright (C) 2017 Jose V. Die  <jodiera@upv.es>
+# Copyright (C) 2018 Jose V. Die  <jodiera@upv.es>
 # Distributed under terms of the MIT license.
 
 
@@ -151,3 +151,60 @@ df_wo_duplicates <- function(dataset, ncolDuplicates, ncolTarget) {
 ## Usage
 # df_silly = read.csv("df_silly.csv")
 # df_wo_duplicates(df_silly, 2, 1)
+
+
+##--------------------------------------------------------------------------------------------
+## TSS coordinates into a GRanges object
+##--------------------------------------------------------------------------------------------
+
+getTSS <- function(inputGR, CDSseqs, bp=200) {
+  
+  # Output: GRanges object with the TSS coordinates (dependency on strand)
+  
+  # Input (inputGR) : GRanges object with the mRNA coordinates
+  # Input (CDSseqs) : DNAStringSet containing the CDS sequences
+  # Input (bp): integer, number of nucleotides extracted from the TSS 
+  
+  
+  # Create an GR image from the inputGR
+  gr.tss = inputGR
+  
+  for(i in seq_along(gr.tss)) {
+    
+    # If strand +
+    if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "+"]) {
+      
+      bp_cut = bp
+      
+      text = table4chr(gr.tss[i])
+      
+      if(i == 10) {bp_cut = 600}         #adapted for my current study
+      if(i %in% c(41,42)) {bp_cut = 56}  #adapted for my current study
+      
+      pattern  = myCDS[[i]][1:bp_cut]
+      start(gr.tss[i]) = start(matchPattern(pattern, text, max.mismatch = 0))
+      
+      bp_cut = bp # take the original bp value
+      
+    }
+    
+      
+    # If strand -
+    if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "-"]) { #do not use 'else' bc some gene might be unmapped (strand = *)
+      
+      bp_cut = bp
+      
+      text = table4chr(gr.tss[i])
+      
+      if(i == 48) {bp_cut = 22}         #adapted for my current study
+      
+      pattern  = myCDS[[i]][1:bp_cut]
+      pattern = reverseComplement(pattern)
+      end(gr.tss[i]) = end(matchPattern(pattern, text, max.mismatch = 0))
+      bp_cut = bp
+    }
+      
+  }
+    gr.tss
+}
+
