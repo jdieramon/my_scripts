@@ -208,3 +208,33 @@ getTSS <- function(inputGR, CDSseqs, bp=200) {
     gr.tss
 }
 
+##--------------------------------------------------------------------------------------------
+## Conversion Table for Chromosome
+##--------------------------------------------------------------------------------------------
+
+## Function to extract Chr
+table4chr <- function(granges) {
+  text = c()
+  j = paste0("ao",as.numeric(seqnames(granges)))
+  if(j == "ao1") {
+    text = ao1 }
+  if(j == "ao2") {
+    text = ao2 }
+  if(j == "ao3") {
+    text = ao3 }
+  if(j == "ao4") {
+    text = ao4 }
+  if(j == "ao5") {
+    text = ao5 }
+  if(j == "ao6") {
+    text = ao6 }
+  if(j == "ao7") {
+    text = ao7 }
+  if(j == "ao8") {
+    text = ao8 }
+  if(j == "ao9") {
+    text = ao9 }
+  
+  text
+}
+
