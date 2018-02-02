@@ -67,7 +67,7 @@ getRPM <- function(rfc, r) {
 ## Convert nanograms to copy number (standard curve qPCR)
 ##------------------------------------------------------------------------------
 getCopies <- function(ng, amplicon_len) {
-    (ng * 6.0221e**23) / (amplicon_len * 660 * 1e**9)
+    (ng * 6.0221*e**23) / (amplicon_len * 660 * 1*e**9)
     }
 
 # ng = amount of amplicon
