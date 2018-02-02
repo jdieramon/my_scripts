@@ -238,3 +238,33 @@ table4chr <- function(granges) {
   text
 }
 
+
+
+get_promoters <- function(inputGR) {
+  
+  # Input (inputGR) : GRanges object with the promoter coordinates
+  # Output: DNAStringSet containing the promoter sequences (bp) 
+  
+  promoter.seq = c()
+  for(i in seq_along(inputGR)) {
+    
+    text = table4chr(inputGR[i]) # load the corresponding Chr
+    
+    # If strand +
+    if(inputGR[i] %in% inputGR[strand(inputGR) == "+"]) {
+      seq = text[start(inputGR[i]):end(inputGR[i])]
+      promoter.seq = c(promoter.seq,seq)
+    }
+
+    # If strand -
+    if(inputGR[i] %in% inputGR[strand(inputGR) == "-"]) {
+      seq = text[start(gr.promoters[i]):end(gr.promoters[i])]
+      seq = reverseComplement(seq)
+      promoter.seq = c(promoter.seq, seq)
+    }
+    
+  }
+  promoter.seq
+  
+}
+
