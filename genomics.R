@@ -262,7 +262,7 @@ get_promoters <- function(inputGR) {
 
     # If strand -
     if(inputGR[i] %in% inputGR[strand(inputGR) == "-"]) {
-      seq = text[start(gr.promoters[i]):end(gr.promoters[i])]
+      seq = text[start(inputGR[i]):end(inputGR[i])]
       seq = reverseComplement(seq)
       promoter.seq = c(promoter.seq, seq)
     }
