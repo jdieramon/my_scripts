@@ -1,0 +1,99 @@
+---
+title: "Working with VCF files"
+author: "Jose V. Die"
+output: html_notebook
+---
+<br> 
+  
+Quick look at the file  
+```{r}
+cat chr20.vcf | less
+```
+&nbsp;  
+
+Get the columns header number of lines 
+```{r}
+grep -n CHROM chr20.vcf
+```
+&nbsp; 
+
+Get first data (from that number of line)
+```{r}
+sed -n 67,100p chr20.vcf | less -S
+```
+&nbsp; 
+
+**Question: How many variants are found in Chr20?**
+Number of total lines in the file:
+```{r}
+wc -l chr20.vcf
+```
+ 
+Number of variants: number of lines from the 1st variant to the last one. 
+```{r}
+sed -n 68,152562p chr20.vcf | wc -l
+```
+
+Extract from the header the filter descriptions
+```{r}
+grep FILTER chr20.vcf | less -S
+```
+&nbsp; 
+
+**Question: How many of these variants have a “FILTER” value of “PASS”?**
+We know that the Filter filed is column 7 in a VCF file, so:  
+```{r}
+sed -n 68,152562p chr20.vcf | cut -f 7 | grep -c PASS
+```
+&nbsp; 
+
+**Question: How many of the variants with a “FILTER” value of “PASS” are phased in NA12877?**
+(Hint:Count only the SNVs with a "|" symbol in their genotype.). 
+
+```{r}
+sed -n 67,152562p chr20.vcf  | cut -f 7,10 | grep PASS | cut -c -1,-8 | grep "|" | wc -l
+```
+&nbsp; 
+
+Databases that store information about variants use unique identifiers, called “rsIDs”. 
+Using rsIDs instead of chromosomal position to identify SNVs allows for the identification of the SNVs even as the reference genome is updated and chromosomal positions change. 
+**Question: How many SNVs with a “FILTER” value of “PASS” have an rsID?**
+```{r}
+sed -n 67,152562p chr20.vcf  | cut -f 1,-7 | grep PASS | grep "rs" | head
+sed -n 67,152562p chr20.vcf  | cut -f 1,-7 | grep PASS | grep "rs" | wc -l
+```
+&nbsp; 
+
+Alagille syndrome is a rare genetic disorder characterized by liver damage caused by abnormalities in the bile ducts. 
+It is caused by a mutation in the JAG1 gene, which is located on chromosome 20. Recall that we used the GRCh38 reference 
+genome to perform variant calling, and with respect to GRCh38, the JAG1 gene starts at position 10,637,684 and ends at 
+position 10,674,046 of chromosome 20.
+
+**Question: How many variants with a “FILTER” value of “PASS” does NA12877 have in the JAG1 gene?**
+First, we have to figure out the lines containing the gene JAG1. There are several ways; here just an alternative:
+```{r}
+# first line containing the gene
+grep 106379 chr20.vcf 
+grep -n 10637926 chr20.vcf 
+# last line containing the gene
+ grep 106739 chr20.vcf 
+grep -n 10673963 chr20.vcf 
+```
+
+```{r}
+sed -n 26852,26970p chr20.vcf | grep PASS | cut -f1,-7 | wc -l
+```
+
+If an indel in a coding region is not a multiple of three nucleotides in length, the resulting mRNA will be out-of-frame beginning at the indel, resulting in a **frameshift mutation**. 
+If an indel or mutation changes an amino-acid-coding codon into a STOP codon resulting in a **nonsense mutation**, the resulting protein will be truncated at the indel site. 
+**Question: How many variants with a “FILTER” value of “PASS” are frameshift variants (denoted by “frameshift_variant” in the VCF file)?**
+```{r}
+grep PASS  chr20.vcf | grep frameshift_variant | wc -l
+```
+**Question: How many are nonsense variants (denoted by “stop_gained” in the VCF file)?**
+```{r}
+grep PASS  chr20.vcf | grep stop_gained | wc -l
+```
+
+
+  
