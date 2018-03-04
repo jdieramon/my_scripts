@@ -5,6 +5,8 @@ output: html_notebook
 ---
 <br> 
   
+First, [download](https://drive.google.com/open?id=1QUut4AWSzlN9qauKhuD1lysS8qud9n6C) the VCF file.
+
 Quick look at the file  
 ```{r}
 cat chr20.vcf | less
