@@ -79,6 +79,8 @@ getCopies <- function(ng, amplicon_len) {
 ## Extract the accession id from a table hit downloaded from Blast(NCBI) 
 ## ---------------------------------------------------------------------------------------------
 
+# The file is downloaded by clicking selected boxes from the 'Sequences producing significant alignments' section.
+
 accs_tidy <- function(blast, acc_type){
     
   ### ''' Take a csv table with Blast hits (downloaded from NCBI) and return a 
@@ -120,6 +122,42 @@ accs_tidy <- function(blast, acc_type){
 ## ncbi = "2MW2NVF9014-Alignment-HitTable.csv"
 ## hit_table  <- read.csv(ncbi, header= FALSE)
 ## hits = accs_tidy(hit_table, acc_type = 'XP')
+
+
+##----------------------------------------------------------------------------------------------
+## Extract the Hit Table ONLY for the best hit per sequence
+## ---------------------------------------------------------------------------------------------
+
+# The file is downloaded by clicking 'Download / Hit Table(csv)' on top of the page (Edit and Resubmit, Save Search, ...)
+
+clean_hit <- function(hitFile) {
+  # Read Downloaded Hit file
+  hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
+  # Chnage colnames
+  colnames(hit) = c("query", "subject", "identity", "align_length", "mismatches",
+                    "gap_opens", "q.start", "q.end", "s.start", "s.end", "evalue",
+                    "bit_score", "%positives")
+  head(hit)
+  
+  # Get 1st line per accession (=best macth)
+  nline = c()
+  xp = c()
+  for(l in 1:nrow(hit)) {
+    if(! hit$query[l] %in% xp) {
+      xp = c(xp, hit$query[l])
+      nline = c(nline, l) 
+    } 
+    
+  }
+  # Extract just the best hit per accession
+  hit[nline,]
+  }
+
+## Usage
+## Ex. multiple blastp searches (with 2 sequences)
+## ncbi = "B1J2TDTZ01R-Alignment-HitTable.csv"
+## clean_hit("B1J2TDTZ01R-Alignment-HitTable.csv")
+
 
 
 ##--------------------------------------------------------------------------------------------
