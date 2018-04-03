@@ -12,7 +12,7 @@ snp_variants <- function(dna) {
     dna <- gsub("\\[|\\]", "", dna)
     
     # get the position of symbol /
-    pos <-  gregexpr2("/", gsub("\\[|\\]", "", dna))[[1]][1]
+    pos <-  gregexpr("/", gsub("\\[|\\]", "", dna))[[1]][1]
     
     #var1: base1 + exclude base2
     var1 <-  paste(substr(dna, 1, pos-1), substr(dna, pos+2, nchar(dna)))
