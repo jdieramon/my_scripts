@@ -246,8 +246,41 @@ getTSS <- function(inputGR, CDSseqs, bp=200) {
     gr.tss
 }
 
+
 ##--------------------------------------------------------------------------------------------
-## Conversion Table for Chromosome
+## Get the promoter gDNA sequence
+##--------------------------------------------------------------------------------------------
+
+get_promoters <- function(inputGR) {
+  
+  # Input (inputGR) : GRanges object with the promoter coordinates
+  # Output: DNAStringSet containing the promoter sequences (bp) 
+  
+  promoter.seq = c()
+  for(i in seq_along(inputGR)) {
+    
+    text = table4chr(inputGR[i]) # load the corresponding Chr
+    
+    # If strand +
+    if(inputGR[i] %in% inputGR[strand(inputGR) == "+"]) {
+      seq = text[start(inputGR[i]):end(inputGR[i])]
+      promoter.seq = c(promoter.seq,seq)
+    }
+
+    # If strand -
+    if(inputGR[i] %in% inputGR[strand(inputGR) == "-"]) {
+      seq = text[start(inputGR[i]):end(inputGR[i])]
+      seq = reverseComplement(seq)
+      promoter.seq = c(promoter.seq, seq)
+    }
+    
+  }
+  promoter.seq
+  
+}
+
+##--------------------------------------------------------------------------------------------
+## Conversion Table for Chromosome : for 'get_promoters' and 'getTSS'
 ##--------------------------------------------------------------------------------------------
 
 ## Function to extract Chr
@@ -278,35 +311,91 @@ table4chr <- function(granges) {
 
 
 ##--------------------------------------------------------------------------------------------
-## Get the promoter gDNA sequence
+## PCR insilico: get the coordinates from a dataset containing markers
 ##--------------------------------------------------------------------------------------------
 
 
-get_promoters <- function(inputGR) {
+mapMarkers <- function(dataset, chr, mm) {
   
-  # Input (inputGR) : GRanges object with the promoter coordinates
-  # Output: DNAStringSet containing the promoter sequences (bp) 
+  ## dataset: df with 2 colums : name, sequence
+  ## chr: chromosome to map the sequences from dataset
+  ## mm: max. mismatch
   
-  promoter.seq = c()
-  for(i in seq_along(inputGR)) {
+  multipos = c()
+  start = c()
+  end = c()
+  B = 1:nrow(dataset)
+  
+  # loop over the markers
+  for(i in seq_along(B)) {
+    #print(paste('SNP',i))                                            ##### print statement                                  
+    pattern = DNAString(as.character(snp_variants(dataset[i,2])[1]))
     
-    text = table4chr(inputGR[i]) # load the corresponding Chr
-    
-    # If strand +
-    if(inputGR[i] %in% inputGR[strand(inputGR) == "+"]) {
-      seq = text[start(inputGR[i]):end(inputGR[i])]
-      promoter.seq = c(promoter.seq,seq)
+    # loop over mismatches: strand +
+    for(m in c(head(c(0:mm), n= 3), tail(c(0:mm), n= 3))) { # Check the first 3 mm, and the last 3 mm
+    #for(m in 0:mm) {                                       # Check one by one
+      print(m)
+      mapping = matchPattern(pattern, chr, max.mismatch = m)
+      
+      # if 1 hit, keep coordinates and break
+      if(length(mapping) == 1) {
+        #print('1 hit found in strand +')                              ##### print statement
+        start = c(start, start(mapping))
+        end = c(end, end(mapping))
+       break
+      }
+      # if >1 hit, keep coordinates and break
+      if(length(mapping) > 1) {
+        multipos <- c(multipos, rep(i, length(mapping)))
+        start <- c(start, start(mapping))
+        end <- c(end, end(mapping))
+        break  
+      }
     }
-
-    # If strand -
-    if(inputGR[i] %in% inputGR[strand(inputGR) == "-"]) {
-      seq = text[start(inputGR[i]):end(inputGR[i])]
-      seq = reverseComplement(seq)
-      promoter.seq = c(promoter.seq, seq)
+    
+    # if no hits --> look in strand - 
+    if(length(mapping) == 0) {
+      #print(paste('Now searching strand - for',i))                    ##### print statement
+      
+      #loop over mismatches
+      for(m in c(head(c(0:mm), n= 3), tail(c(0:mm), n= 3))) {
+        #for(m in 0:mm) {
+        print(m)
+        pattern = reverseComplement(pattern)
+        mapping = matchPattern(pattern, chr, max.mismatch = m)  
+        
+        # if 1 hit, keep coordinates and break
+        if(length(mapping) == 1) {
+          #print('1 hit found in strand -')                            ##### print statement
+          start = c(start, start(mapping))
+          end = c(end, end(mapping))
+          break
+        }
+        
+        # if >1 hit, keep coordinates and break
+        if(length(mapping) > 1) {
+          multipos <- c(multipos, rep(i, length(mapping)))
+          start <- c(start, start(mapping))
+          end <- c(end, end(mapping))
+         break  
+        }
+      }
+      
+    }
+    # if no hits -- > the sequence does not map to any strand
+    if(length(mapping) == 0){
+      # print('There is no hit in any strand')                         ##### print statement
+      start <- c(start, 0)
+      end <- c(end, 0)
     }
     
   }
-  promoter.seq
   
+  a = list(start=start, end=end, multiple= multipos)
+  a
+    
 }
+
+## Usage
+# coord2 = mapMarkers(snp, ao2, 10)
 
