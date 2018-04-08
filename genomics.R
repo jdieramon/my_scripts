@@ -328,7 +328,7 @@ mapMarkers <- function(dataset, chr, mm) {
   
   # loop over the markers
   for(i in seq_along(B)) {
-    #print(paste('SNP',i))                                            ##### print statement                                  
+    print(paste('SNP',i))                                            ##### print statement                                  
     pattern = DNAString(as.character(snp_variants(dataset[i,2])[1]))
     
     # loop over mismatches: strand +
