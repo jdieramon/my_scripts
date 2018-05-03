@@ -1,3 +1,6 @@
+## Dependencies
+library(rentrez)
+
 ## Read the prot. ids as data frame
 ids <- read.csv("prot_ids", header = FALSE)
 
