@@ -24,3 +24,10 @@ for(i in seq_along(ids)) {
   genome[i] = faa$genomicinfo[,2]
   
   }
+
+
+## Build df containing columns: prot.ids, genome
+typhi = data.frame(ids, genome) 
+
+## Export to csv file
+write.csv(typhi, file = "summary")
