@@ -1,0 +1,26 @@
+## Read the prot. ids as data frame
+ids <- read.csv("prot_ids", header = FALSE)
+
+## Convert into vector
+ids = ids[,1]
+
+
+## Loop over protein ids
+
+genome = c()
+
+  
+for(i in seq_along(ids)) {
+  
+  target = ids[i]
+  
+  # NCBI E-utilities
+  foo = entrez_link(dbfrom='protein', id=target, db='all')
+  
+  # Link to Gene database
+  faa = entrez_summary(db = "gene", id = foo$links$protein_gene)
+  
+  # From genomic info, extract the genome
+  genome[i] = faa$genomicinfo[,2]
+  
+  }
