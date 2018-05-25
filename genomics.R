@@ -399,3 +399,45 @@ mapMarkers <- function(dataset, chr, mm) {
 ## Usage
 # coord2 = mapMarkers(snp, ao2, 10)
 
+
+
+## REPASAR DESDE AQUI
+
+## -------------------------------------------------------------------------------
+## Clean up the end of a string in basic R (NO stringr)
+## -------------------------------------------------------------------------------
+
+srr = c("SRR5927133.121.1", "SRR5927133.121.2", "SRR5927133.245.2", "SRR5927133.1978.1",
+"SRR5927133.1978.2", "SRR5927133.2717.1", "SRR5927133.2717.2", "SRR5927133.3179.1", 
+"SRR5927133.3179.2", "SRR5927133.3366.1")
+
+# remove the last 2 characters
+
+clean_end <- function(str, x){
+  str = substr(str, start = 1, stop = nchar(str)-x)
+  str
+}
+
+srr[1]
+clean_end(srr[1],2)
+# hacerlo con todas
+lapply(srr, function(x) clean_end(srr,2))[[1]]
+
+# no se por q hace lo mismo para cada elemento. la unica forma q encuentro de solucionarlo
+# es coger el primer elemento de la lista[[1]]
+
+
+## -------------------------------------------------------------------------------
+## Extract the n-chars end from a string 
+## -------------------------------------------------------------------------------
+
+s = "SRR5927133.121.1"
+get_end <- function(text, x) {
+  text = as.character(text)
+  text = substr(text, start = nchar(text)-x+1, stop = nchar(text))
+  text
+  
+}
+
+get_end(s, 2)
+
