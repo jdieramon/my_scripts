@@ -439,7 +439,9 @@ get_CD = function(xp) {
 
 ## Usage
 #xp = c("XP_012572936", "XP_012572937", "YP_001949758")
-#for(x in xp) {print(lapply(x, get_CD))}
+#lapply(xp, function(x) get_CD(x))
+#sapply(xp, function(x) get_CD(x))
+
 
 
 
