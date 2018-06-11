@@ -410,7 +410,7 @@ library(rentrez)
 
 
 ## Define function
-get_CDD = function(xp) {
+get_CD = function(xp) {
   
   ### ''' Take a protein id and returns a vector with the region name of the 
   ### Conserved Protein Domain Family, if applicable '''
@@ -439,7 +439,7 @@ get_CDD = function(xp) {
 
 ## Usage
 #xp = c("XP_012572936", "XP_012572937", "YP_001949758")
-#for(x in xp) {print(lapply(x, get_CDD))}
+#for(x in xp) {print(lapply(x, get_CD))}
 
 
 
