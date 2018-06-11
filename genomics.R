@@ -280,7 +280,7 @@ get_promoters <- function(inputGR) {
 }
 
 ##--------------------------------------------------------------------------------------------
-## Conversion Table for Chromosome : for 'get_promoters' and 'getTSS'
+## Conversion Table for Chromosome: for 'get_promoters' and 'getTSS'
 ##--------------------------------------------------------------------------------------------
 
 ## Function to extract Chr
@@ -400,44 +400,92 @@ mapMarkers <- function(dataset, chr, mm) {
 # coord2 = mapMarkers(snp, ao2, 10)
 
 
+##--------------------------------------------------------------------------------------------
+##  Get the Conserved Protein Domain Family from a protein id
+##--------------------------------------------------------------------------------------------
 
-## REPASAR DESDE AQUI
 
-## -------------------------------------------------------------------------------
-## Clean up the end of a string in basic R (NO stringr)
-## -------------------------------------------------------------------------------
+## Dependencies
+library(rentrez)
 
-srr = c("SRR5927133.121.1", "SRR5927133.121.2", "SRR5927133.245.2", "SRR5927133.1978.1",
-"SRR5927133.1978.2", "SRR5927133.2717.1", "SRR5927133.2717.2", "SRR5927133.3179.1", 
-"SRR5927133.3179.2", "SRR5927133.3366.1")
 
-# remove the last 2 characters
+## Define function
+get_CDD = function(xp) {
+  
+  ### ''' Take a protein id and returns a vector with the region name of the 
+  ### Conserved Protein Domain Family, if applicable '''
+    
+  # NCBI Eutils through rentrez pckg.
+  protein <-  entrez_summary(db="protein", id= xp)
+  p_links = entrez_link(dbfrom='protein', id=protein$uid, db='cdd')
+  cdd = p_links$links$protein_cdd_concise_2
+  
+  
+  # initializes an empty vector
+  acc = c()
+  
+  # if CDD
+  if(! is.null(cdd)) {
+    for(i in seq_along(cdd)) {
+      region = entrez_summary(db="cdd", id= cdd[i])
+      acc = c(acc, region$accession)
+    }
 
-clean_end <- function(str, x){
-  str = substr(str, start = 1, stop = nchar(str)-x)
-  str
+  } else {acc = 0}
+  
+  acc
+  
 }
 
+## Usage
+#xp = c("XP_012572936", "XP_012572937", "YP_001949758")
+#for(x in xp) {print(lapply(x, get_CDD))}
+
+
+
+## -------------------------------------------------------------------------------
+## Clean up the n-end characters from a string (basic R , NO stringr)
+## -------------------------------------------------------------------------------
+
+clean_end <- function(str, x){
+  
+  ### str, string vector
+  ### x, number of characters
+    
+  str = substr(str, start = 1, stop = nchar(str)-x)
+  str
+ }
+
+## Usage: remove the last 2 characters
+#srr = c("SRR5927133.121.1", "SRR5927133.121.2", "SRR5927133.245.2", "SRR5927133.1978.1","SRR5927133.1978.2")
+# first element
 srr[1]
 clean_end(srr[1],2)
-# hacerlo con todas
-lapply(srr, function(x) clean_end(srr,2))[[1]]
 
-# no se por q hace lo mismo para cada elemento. la unica forma q encuentro de solucionarlo
-# es coger el primer elemento de la lista[[1]]
+# for each element in the vector
+lapply(srr, function(x) clean_end(x,2))
+sapply(srr, function(x) clean_end(x,2), USE.NAMES = FALSE)
+
 
 
 ## -------------------------------------------------------------------------------
-## Extract the n-chars end from a string 
+## Extract the end n-chars from a string (basic R , NO stringr)
 ## -------------------------------------------------------------------------------
 
-s = "SRR5927133.121.1"
-get_end <- function(text, x) {
-  text = as.character(text)
+get_end <- function(str, x) {
+  
+  ### str, string vector
+  ### x, number of characters
+ 
+  text = as.character(str)
   text = substr(text, start = nchar(text)-x+1, stop = nchar(text))
   text
   
 }
 
-get_end(s, 2)
 
+## Usage: extract the last 2 characters
+## first element
+#get_end(srr[1],2)
+## for each element in the vector
+#sapply(srr, function(x) get_end(x,2), USE.NAMES = FALSE)
