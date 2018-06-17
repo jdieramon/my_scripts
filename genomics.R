@@ -76,7 +76,7 @@ getCopies <- function(ng, amplicon_len) {
 
 
 ##----------------------------------------------------------------------------------------------
-## Extract the accession id from a table hit downloaded from Blast(NCBI) 
+## Extract the accession id from a table hit downloaded from blast (NCBI) 
 ## ---------------------------------------------------------------------------------------------
 
 # The file is downloaded by clicking selected boxes from the 'Sequences producing significant alignments' section.
