@@ -461,12 +461,13 @@ clean_end <- function(str, x){
 ## Usage: remove the last 2 characters
 #srr = c("SRR5927133.121.1", "SRR5927133.121.2", "SRR5927133.245.2", "SRR5927133.1978.1","SRR5927133.1978.2")
 # first element
-srr[1]
-clean_end(srr[1],2)
+#srr[1]
+#clean_end(srr[1],2)
+
 
 # for each element in the vector
-lapply(srr, function(x) clean_end(x,2))
-sapply(srr, function(x) clean_end(x,2), USE.NAMES = FALSE)
+#lapply(srr, function(x) clean_end(x,2))
+#sapply(srr, function(x) clean_end(x,2), USE.NAMES = FALSE)
 
 
 
