@@ -454,7 +454,7 @@ clean_end <- function(str, x){
   ### str, string vector
   ### x, number of characters
     
-  str = substr(str, start = 1, stop = nchar(str)-x)
+  str = substr(as.character(str), start = 1, stop = nchar(str)-x)
   str
  }
 
