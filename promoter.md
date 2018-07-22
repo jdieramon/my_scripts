@@ -18,7 +18,6 @@ University of Cordoba
 
 ```python
 # set wd for the actual experiment
-# %cd "/Users/josedie/Google Drive/Asparagus/2 NBS/data"
 %cd "/Users/josedie/Desktop/giuseppe/"
 ```
 
@@ -577,70 +576,3 @@ reload(my_functions)
 
     <module 'my_functions' from 'my_functions.pyc'>
 
-
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-## CRE Position 
-
-### Check the start codon position
-
-
-```python
-def getWrongCodon(promoter) : 
-    '''Identifica si un promotor no tiene el start codon (ATG)'''
-    if promoter[-9:-6] != 'ATG' : 
-        return promoter[-9::]
-
-i=0
-for item in genome : 
-    #i+=1
-    if getWrongCodon(item) != None:
-        print i,getWrongCodon(item)
-    i +=1
-
-```
-
-If any sequence had not the TSS in the final 3 aa (ATG...) this function should return an error.
-
-
-```python
-getWrongCodon(genome[1])
-```
-
-In the example (first sequence), there is no output because the TSS is OK. We can check that the last 9 bp match the TSS.
-
-
-```python
-genome[1][-9:]
-```
-
-
-
-
-    'ATGCAATTT'
-
-
-
-We can check if any sequence is all right. 
-
-
-```python
-for p in range(len(genome)) : 
-    getWrongCodon(genome[p])
-```
-
-completar...
-
-
-```python
-
-```
