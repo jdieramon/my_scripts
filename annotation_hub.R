@@ -70,10 +70,15 @@ head(keys(cicer, keytype = "SYMBOL", pattern = "ARF"))
 
 # method select
 select(cicer, keys = "101509359", keytype = "ENTREZID", 
-       columns = columns(cicer))
-
-select(cicer, keys = "101509359", keytype = "ENTREZID", 
        columns = c("GO", "ONTOLOGY", "SYMBOL"))
 
 select(cicer, keys = "LOC101509359", keytype = "ALIAS", 
        columns = c("GO", "CHR", "GENENAME"))
+
+
+library(dplyr)
+select(cicer, keys = "101509359", keytype = "ENTREZID", 
+       columns = columns(cicer)) %>% 
+  display() 
+
+
