@@ -493,3 +493,24 @@ get_end <- function(str, x) {
 #get_end(srr[1],2)
 ## for each element in the vector
 #sapply(srr, function(x) get_end(x,2), USE.NAMES = FALSE)
+
+
+## -------------------------------------------------------------------------------
+## Extract the species name from a sequence description (stringr)
+## -------------------------------------------------------------------------------
+
+# Dependency
+#library(stringr)
+
+get_spp <-
+function(description) {
+  
+  spp <- str_sub(description, 
+                 start = str_locate(description, "\\[")[1]+1,
+                 end = str_locate(description, "\\]")[2]-1)
+  spp
+}
+
+## Usage: 
+#desc <-  c("PREDICTED: auxin response factor 19-like isoform X1 [Glycine max]")
+#get_spp(desc)  
