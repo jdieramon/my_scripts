@@ -514,3 +514,37 @@ function(description) {
 ## Usage: 
 #desc <-  c("PREDICTED: auxin response factor 19-like isoform X1 [Glycine max]")
 #get_spp(desc)  
+
+
+## -------------------------------------------------------------------------------
+Taxonomy identifiers <-->  scientific names (NCBI)
+## -------------------------------------------------------------------------------
+
+# Dependencies
+# library(rentrez)
+
+# Define some functions : 
+get_tax_id <- function(scientific_name) {
+  myterm = paste0(scientific_name,"[SCIN]")
+  esearch = entrez_search(db = "taxonomy", term = myterm)
+  esearch$ids
+  }
+  
+get_scientific_name <- function(taxid) {
+  esumm <- entrez_summary(db="taxonomy", id=taxid)
+  esumm$scientificname
+  }
+
+## Usage
+# From species name -> taxonomy id :
+#mycicer <- c("Cicer macracanthum", "Cicer canariense", "Cicer chorassanicum", "Cicer cuneatum", "Cicer judaicum", 
+#        "Cicer yamashitae", "Cicer bijugum", "Cicer reticulatum", "Cicer echinospermum", "Cicer pinnatifidum", 
+#        "Cicer arietinum")
+
+#mytaxids = sapply(mycicer, function(x) get_tax_id(x), USE.NAMES = FALSE)
+
+# From taxonomy id -> scientific name :
+# mynames = sapply(mytaxids, function(x) get_scientific_name(x), USE.NAMES = FALSE)
+
+                  
+
