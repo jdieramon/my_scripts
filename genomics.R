@@ -517,7 +517,7 @@ function(description) {
 
 
 ## -------------------------------------------------------------------------------
-Taxonomy identifiers <-->  scientific names (NCBI)
+# Taxonomy identifiers <-->  scientific names (NCBI)
 ## -------------------------------------------------------------------------------
 
 # Dependencies
