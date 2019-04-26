@@ -155,7 +155,6 @@ clean_hit <- function(hitFile) {
 
 ## Usage
 ## Ex. multiple blastp searches (with 2 sequences)
-## ncbi = "B1J2TDTZ01R-Alignment-HitTable.csv"
 ## clean_hit("B1J2TDTZ01R-Alignment-HitTable.csv")
 
 
