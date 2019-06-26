@@ -495,6 +495,27 @@ get_end <- function(str, x) {
 
 
 ## -------------------------------------------------------------------------------
+## Extract the characters after a period (stringr)
+## -------------------------------------------------------------------------------
+
+get_after_period <- function(my_vector) {
+  
+  # Return a string vector without the characters 
+  # before a period (excluding the peiod)
+  
+  # my_vector, a string vector 
+  
+  str_sub(my_vector, str_locate(my_vector, "\\.")[,1]+1)
+  
+}
+
+## Usage
+#my_vector <-  c('foobar.barfoo', 'amazing.point')
+#get_after_period(my_vector)
+
+
+
+## -------------------------------------------------------------------------------
 ## Extract the species name from a sequence description (stringr)
 ## -------------------------------------------------------------------------------
 
