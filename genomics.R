@@ -130,7 +130,7 @@ accs_tidy <- function(blast, acc_type){
 
 # The file is downloaded by clicking 'Download / Hit Table(csv)' on top of the page (Edit and Resubmit, Save Search, ...)
 
-clean_hit <- function(hitFile) {
+best_hit <- function(hitFile) {
   # Read Downloaded Hit file
   hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
   # Chnage colnames
@@ -155,7 +155,7 @@ clean_hit <- function(hitFile) {
 
 ## Usage
 ## Ex. multiple blastp searches (with 2 sequences)
-## clean_hit("B1J2TDTZ01R-Alignment-HitTable.csv")
+## best_hit("B1J2TDTZ01R-Alignment-HitTable.csv")
 
 
 
