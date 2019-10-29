@@ -1,5 +1,5 @@
 # genomics.R -- a set of the most common functions that I use in my genomics analyses
-# Copyright (C) 2018 Jose V. Die  <jodiera@upv.es>
+# Copyright (C) 2019 Jose V. Die  <jodiera@upv.es>
 # Distributed under terms of the MIT license.
 
 
@@ -62,6 +62,7 @@ getRPM <- function(rfc, r) {
 ## Usage:
 ## getRFC(1000, 60)
 ## getRPM(7500, 60)
+
 
 ##------------------------------------------------------------------------------
 ## Convert nanograms to copy number (standard curve qPCR)
@@ -628,4 +629,14 @@ characterizeTable <- function(targets) {
   
 }
 
+## -------------------------------------------------------------------------------
+# Re-order a vector based on values shown in another vector
+## -------------------------------------------------------------------------------
 
+make_index <- function(vector1, vector2) {
+  # re-order vector1 based on the order shown by vector2
+  # returns an index 
+  
+  sapply(vector1, function(x) which(x == as.character(vector2)), USE.NAMES = F)
+  
+}
