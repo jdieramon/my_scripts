@@ -1,3 +1,5 @@
+# Copyright (c) 2019 Jose V. Die
+
 # Dependencies
 library(dplyr)
 library(tidyr)
