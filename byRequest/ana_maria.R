@@ -19,7 +19,7 @@ library(XML)
 system("mv ~/Downloads/*.tab ~/Downloads/uniprot.tab")
 
 # Read file 
-uniprot <- read.delim("~/Downloads/uniprot.tab")
+uniprot <- read.delim("data/uniprot.tab")
 
 # Check file
 head(uniprot)
@@ -39,7 +39,7 @@ uniprot
 ##  TAXONOMY 
 # ------------------------------------------------------------------------
 # Read csv file with protein ids
-prot_ids <- read.csv("~/Desktop/prot_ids.txt", header = F, stringsAsFactors = F)
+prot_ids <- read.csv("data/prot_ids.txt", header = F, stringsAsFactors = F)
 
 # Check out the df
 prot_ids %>% count(V1)
