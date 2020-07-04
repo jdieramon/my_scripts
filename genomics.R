@@ -634,9 +634,17 @@ characterizeTable <- function(targets) {
 ## -------------------------------------------------------------------------------
 
 make_index <- function(vector1, vector2) {
-  # re-order vector1 based on the order shown by vector2
+  # re-order vector2 based on the order of vector1
   # returns an index 
   
   sapply(vector1, function(x) which(x == as.character(vector2)), USE.NAMES = F)
   
 }
+
+#Usage: 
+#Equivalent to base function : `match`
+#pets <- c("dog", "cat", "bird", "deer", "chicken")
+#wild <- c("chicken", "cat",  "dog", "deer", "bird") 
+#pets[make_index(wild, pets)]
+
+#pets[match(wild, pets)]
