@@ -11,7 +11,7 @@ make_comma <- function(string) {
 }
 
 # Load data 
-myfile <- read.table("Downloads/scan_data2", sep = " ", stringsAsFactors=FALSE)
+myfile <- read.table("data/scan_data2", sep = " ", stringsAsFactors=FALSE)
 
 # Check data
 glimpse(myfile)
@@ -21,18 +21,12 @@ myfile %>%
   
 
 # Change "." to ","
-myfile %>% 
-  as_tibble() %>% 
-  mutate_if(is.double, make_comma)
-            
-
-# Apply changes
 myfile <- myfile %>% 
   as_tibble() %>% 
   mutate_if(is.double, make_comma)
 
 # Write csv into a file 
-write.csv(myfile, file = "Desktop/mary.csv", row.names = FALSE)
+write.csv(myfile, file = "data/mary.csv", row.names = FALSE)
 
             
 
