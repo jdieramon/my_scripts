@@ -129,6 +129,8 @@ accs_tidy <- function(blast, acc_type){
 ## Extract the Hit Table ONLY for the best hit per sequence
 ## ---------------------------------------------------------------------------------------------
 
+# This function assumes that the query is an unknown sequence. If it is an id. (GenBank) the best hit in BLAST will be itself and 
+# this function is useless. In that case, use the function 'best_homolog'  
 # The file is downloaded by clicking 'Download / Hit Table(csv)' on top of the page (Edit and Resubmit, Save Search, ...)
 
 best_hit <- function(hitFile) {
@@ -157,6 +159,41 @@ best_hit <- function(hitFile) {
 ## Usage
 ## Ex. multiple blastp searches (with 2 sequences)
 ## best_hit("B1J2TDTZ01R-Alignment-HitTable.csv")
+
+
+
+##----------------------------------------------------------------------------------------------
+## Extract the Hit Table ONLY for the best hit per sequence
+## ---------------------------------------------------------------------------------------------
+
+# The file is downloaded by clicking 'Download / Hit Table(csv)' on top of the page (Edit and Resubmit, Save Search, ...)
+
+best_homolog <- function(hitFile) {
+  
+  ### ''' Take a csv table with Blast hits and return a 
+  ### subset containing only the best hit for each query '''
+  
+  # Read Downloaded Hit file
+  hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
+  
+  # Change colnames
+  colnames(hit) = c("query", "subject", "identity", "align_length", "mismatches",
+                    "gap_opens", "q.start", "q.end", "s.start", "s.end", "evalue",
+                    "bit_score", "%positives")
+  
+  res <- as_tibble(hit) %>% 
+    filter(query != subject) %>% 
+    group_by(query) %>% 
+    slice(1) %>% 
+    ungroup()
+  
+  res
+  
+}
+
+## Usage
+## Ex. multiple blastp searches (with 2 sequences)
+## best_homolog("B1J2TDTZ01R-Alignment-HitTable.csv"
 
 
 
