@@ -611,7 +611,7 @@ get_scientific_name <- function(taxid) {
 
 characterizeTable <- function(targets) {
   
-  # targets, character vector with protein accession ids
+  # targets, character vector with XM protein accession ids
   
   ## Initialize the vectors containing the features that we need for each sequence
   LOC    <-  vector("character") 
@@ -622,9 +622,11 @@ characterizeTable <- function(targets) {
   AA     <-  vector("integer")
   mol_wt <-  vector("integer")
   xm     <-  vector("integer")
+  xp     <-  vector("integer")
   
   ## Extract feature info from NCBI
   for(xi in as.character(targets)) {
+    xp = c(xp, xi)
     xm = c(xm, getXM(xi))
     
     xpinfo <- entrez_summary(db = "protein", id = xi)
@@ -665,7 +667,6 @@ characterizeTable <- function(targets) {
   t1
   
 }
-
 ## -------------------------------------------------------------------------------
 # Re-order a vector based on values shown in another vector
 ## -------------------------------------------------------------------------------
