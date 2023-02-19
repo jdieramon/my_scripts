@@ -168,3 +168,26 @@ get_before_period <- function(str) {
   
 }
 
+
+get_promoters <- function(gr, chr = "Ca3") {
+  
+  inputGR = gr[seqnames(gr) == chr]  
+  text = genome[[which(seqnames(genome) == chr)]]
+  promoter.seq = c()
+  
+  for(i in seq_along(inputGR)) {
+    seq = text[start(inputGR[i]):end(inputGR[i])]
+    
+    if(inputGR[i] %in% inputGR[strand(inputGR) == "+"]) {
+      promoter.seq = c(promoter.seq,seq)
+    }
+    if(inputGR[i] %in% inputGR[strand(inputGR) == "-"]) {
+      seq = reverseComplement(seq)
+      promoter.seq = c(promoter.seq, seq)
+    }
+    
+  }
+  
+  promoter.seq
+  
+}
