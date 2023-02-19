@@ -99,3 +99,72 @@ characterizeTable <- function(targets) {
 ##targets <- c("XP_004498126.1")
 ##targets <- c("XP_004513719.1", "XP_004485955.1", "XP_004498126.1", "XP_004498126.1")
 ##tdat <- characterizeTable(targets)
+
+
+
+TSScoordinates <- function(gr, CDSstringset, bp = 150, chr) {
+  
+  inputGR = gr[seqnames(gr) == chr]
+  gr.tss = inputGR
+  
+  for(i in seq_along(gr.tss)) {
+    bp_cut = bp
+    text = genome[[which(seqnames(genome) == chr)]]
+    pattern = CDSstringset[[which(names(CDSstringset) == gr.tss$LOC[i])]][1:bp_cut]
+    
+    if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "+"]) {
+      
+      start(gr.tss[i]) = start(matchPattern(pattern, text, max.mismatch = 0))
+      
+    }
+    
+    if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "-"]) {#do not use 'else' bc some gene might be unmapped (strand = *)
+      
+      pattern = reverseComplement(pattern)
+      end(gr.tss[i]) = end(matchPattern(pattern, text, max.mismatch = 0))
+    }
+    
+  }
+  
+  gr.tss
+}
+
+## Usage
+## gr.tss = GRangesList(TSScoordinates(gr, mads_cds, bp = 150, "Ca1"),
+##                      TSScoordinates(gr, mads_cds, bp = 150, "Ca3"), 
+##                      TSScoordinates(gr, mads_cds, bp = 150, "Ca4"))
+
+
+
+names2LOC <- function(str) {
+  # Take a vector string (header from multifasta file)
+  # Return the LOC id in a tidy format 
+  str_split(str_split(str, "\\(")[[1]][2], "\\)")[[1]][1]
+}
+
+## Usage 
+## mads_cds = readDNAStringSet("mads_cds.fasta")
+## my_names = names(mads_cds)
+## my_names <- sapply(my_names, function(i) names2LOC(i), USE.NAMES = F)
+                   
+                   
+names2XM <- function(str) {
+  # Take a vector string (header from multifasta file) 
+  # Return the XM id in a tidy format
+  
+  # str, a string vector 
+  
+  str_split(str, "\\:")[[1]][1]  
+}
+
+get_before_period <- function(str) {
+  
+  # Return a string vector without the characters 
+  # before a period (excluding the period)
+  
+  # str, a string vector 
+  
+  str_split(str[1], "\\.")[[1]][1]
+  
+}
+
