@@ -32,9 +32,7 @@ best_homolog <- function(hitFile) {
 
 
 
-#library(dplyr)
-#library(refseqR)
-#library(rentrez)
+
 
 characterizeTable <- function(targets) {
   
@@ -104,13 +102,14 @@ characterizeTable <- function(targets) {
 
 TSScoordinates <- function(gr, CDSstringset, bp = 150, chr) {
   
-  inputGR = gr[seqnames(gr) == chr]
-  gr.tss = inputGR
+  CDSstringset = unique(CDSstringset)
+  gr.tss = gr[seqnames(gr) == chr]
+  bp_cut = bp
   
-  for(i in seq_along(gr.tss)) {
-    bp_cut = bp
-    text = genome[[which(seqnames(genome) == chr)]]
-    pattern = CDSstringset[[which(names(CDSstringset) == gr.tss$LOC[i])]][1:bp_cut]
+  for(i in seq_along(gr.tss)) { 
+    
+    text = genome[[which(names(genome) == chr)]]
+    pattern = CDSstringset[which(names(CDSstringset) == gr.tss$LOC[i])][[1]][1:bp_cut]
     
     if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "+"]) {
       
@@ -126,7 +125,9 @@ TSScoordinates <- function(gr, CDSstringset, bp = 150, chr) {
     
   }
   
-  gr.tss
+  gr.tss  
+  
+  
 }
 
 ## Usage
@@ -146,8 +147,8 @@ names2LOC <- function(str) {
 ## mads_cds = readDNAStringSet("mads_cds.fasta")
 ## my_names = names(mads_cds)
 ## my_names <- sapply(my_names, function(i) names2LOC(i), USE.NAMES = F)
-                   
-                   
+
+
 names2XM <- function(str) {
   # Take a vector string (header from multifasta file) 
   # Return the XM id in a tidy format
