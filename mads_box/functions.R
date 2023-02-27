@@ -3,7 +3,66 @@
 # Distributed under terms of the MIT license.
 
 
-best_homolog <- function(hitFile) {
+get_xp_length <- function(xp_id){
+  ### ''' Estimate protein length (aa)
+  
+  xpinfo <- entrez_summary(db = "protein", id = xp_id)
+  xpinfo$slen
+  
+}
+
+blast_homologs <- function(hitFile, ident, cover) {
+  
+  ### ''' Take a csv table with Blast hits and return a 
+  ### subset filteres by %Identity & %Coverage (longer sequence)
+  
+  # read downloaded Hit file
+  hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
+  
+  # change colnames
+  colnames(hit) = c("query", "subject", "identity", "align_length", "mismatches",
+                    "gap_opens", "q.start", "q.end", "s.start", "s.end", "evalue",
+                    "bit_score", "%positives")
+  
+  # make a table_length for queries & subjects 
+  queries <- hit %>% 
+    pull(query) %>% 
+    unique()
+  
+  tlengths_query = tibble(query = queries, len.query = sapply(query, function(i) get_xp_length(i)))
+  
+  subjects <- hit %>% 
+    pull(subject) %>% 
+    unique()
+  
+  tlengths_sub = tibble(subject = subjects, len.sub = sapply(subject, function(i) get_xp_length(i)))
+  
+  
+  # combine hit_table with queries & subjects lengths 
+  # estimate coverage (longer sequence)
+  # apply filters : identity * coverage
+  hit %>% 
+    tibble() %>% 
+    select(-c(align_length, bit_score, "%positives", mismatches, gap_opens)) %>% 
+    right_join(tlengths_query, by = "query") %>% 
+    right_join(tlengths_sub,   by = "subject") %>% 
+    mutate(cov.query = (q.end - q.start + 1)/len.query, 
+           cov.sub = (s.end - s.start + 1)/len.sub) %>% 
+    mutate(cov_long = case_when(len.query > len.sub ~ cov.query*100, 
+                                len.query < len.sub ~ cov.sub*100, 
+                                TRUE ~ cov.query*100)) %>% 
+    select(-c(q.start, q.end, s.start, s.end, len.query, len.sub, cov.query, cov.sub)) %>% 
+    filter(identity >= ident, cov_long >= cover) %>% 
+    select(query, subject, identity, cov_long, evalue) %>% 
+    arrange(identity)
+  
+  
+}
+ 
+
+
+ 
+blast_best_homolog <- function(hitFile) {
   
   ### ''' Take a csv table with Blast hits and return a 
   ### subset containing only the best hit for each query '''

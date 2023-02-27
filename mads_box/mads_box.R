@@ -12,24 +12,123 @@ library(rentrez)
 # Load functions 
 source("mads_box/functions.R")
 
+# Set wd
+setwd("mads_box/")
+
+## -----------------------------------------------------------------------------
+##                    Gene Family Identification
+## -----------------------------------------------------------------------------
 
 
-# --- Get the mRNA sequence ----
+# # --- Get the mRNA sequence (Feb 13, 2023) ----
+# 
+# # Read object 
+# xps <- read.csv("dat/HITS_Hom_chickpea_Ilaria.csv")
+# 
+# # Make a vector 
+# xps <- xps$list
+# 
+# # fix some typo : 
+# xps[88] = "XP_004498126.1"
+# 
+# # Get XM ids from XP ids. 
+# xms <- sapply(xps, function(xp) getXM(xp), USE.NAMES = FALSE)
+# 
+# # Save an object containing the corresponding XM, XP
+# seqs <- list(unname(xms), xps)
+# save(seqs, file = "res/sequences.rda")
+# 
+# # Make a multi-fasta file from XM ids 
+# save_CDSfasta_from_xms(xms, nameFile = "res/mads_cds")
+# 
+# 
+# 
+# # --- Iterative BLAST (Feb 13, 2023) ----
+# hitFile <- "dat/YN34UYFE013-Alignment-HitTable.csv"
+# res <- blast_best_homolog(hitFile)
+# ca_MADSbox <-  res %>% pull(subject)
+# 
+# xps # Illatia first list 
+# xps <- unique(xps) # unique XP ids from Ilaria first list 
+# 
+# # add 1st XP id 
+# ca_MADSbox <- c(ca_MADSbox, res$query[1])
+# 
+# 
+# # --- checks 
+# hist(res$evalue)
+# 
+# hist(res$identity)
+# abline(v = 70, col = "red")
+# 
+# ids70 <- res %>% 
+#   filter(identity >=70) %>% 
+#   pull(subject)
+# 
+# ids70 %in% xps
+# ids70[!ids70 %in% xps]
+# 
+# 
+# "XP_027187420.1" %in% xps
+# 
+# 
+# ids50 <- res %>% 
+#   filter(identity >=50) %>% 
+#   pull(subject)
+# 
+# ids50[!ids50 %in% xps]
+# 
+# 
+# ids30 <- res %>% 
+#   filter(identity >=30) %>% 
+#   pull(subject)
+# 
+# ids30[!ids30 %in% xps]
 
-# Read object
-xps <- read.csv("dat/HITS_Hom_chickpea_Ilaria.csv")
+
+
+
+
+# --- Get the mRNA sequence (Feb 27, 2023) ----
+
+# Read object 
+xps <- read.csv("dat/Mads_XP_unici.csv")
 
 # Make a vector 
 xps <- xps$list
+xps <- unique(xps)
 
-# fix some typo : 
-xps[88] = "XP_004498126.1"
+
+# --- Iterative BLAST (Feb 27, 2023) ----
+hitFile <- "dat/ZT55WJYH01N-Alignment-HitTable.csv"
+
+blast_res <- blast_homologs(hitFile, ident = 55, cover = 85)
+
+
+# Gene family is made of : 
+#   original xp ids ('xp' object)
+#   'subject' column ('blast_res' object)
+
+ca_MADSbox <- unique(c(xps, blast_res$subject))
+
+length(xps)
+length(ca_MADSbox)
+
+
+# Make some plots for checking 
+hist(blast_res$identity, main = "iterative BLAST", xlab = "%identity")
+hist(blast_res$cov_long, main = "iterative BLAST", xlab = "%coverage")
+hist(blast_res$evalue,   main = "iterative BLAST", xlab = "Evalue")
+
+
 
 # Get XM ids from XP ids. 
-xms <- sapply(xps, function(xp) getXM(xp), USE.NAMES = FALSE)
+xms <- sapply(ca_MADSbox, function(xp) getXM(xp), USE.NAMES = FALSE)
 
 # Save an object containing the corresponding XM, XP
-seqs <- list(unname(xms), xps)
+seqs <- list(unname(xms), ca_MADSbox)
+
+
 save(seqs, file = "res/sequences.rda")
 
 # Make a multi-fasta file from XM ids 
@@ -37,48 +136,11 @@ save_CDSfasta_from_xms(xms, nameFile = "res/mads_cds")
 
 
 
-# --- Iterative BLAST ----
-hitFile <- "dat/YN34UYFE013-Alignment-HitTable.csv"
-res <- best_homolog(hitFile)
-ca_mBox <-  res %>% pull(subject)
-
-xps # Illatia first list 
-xps <- unique(xps) # unique XP ids from Ilaria first list 
-
-# add 1st XP id 
-ca_mBox <- c(ca_mBox, res$query[1])
 
 
-# --- checks 
-hist(res$evalue)
-
-hist(res$identity)
-abline(v = 70, col = "red")
-
-ids70 <- res %>% 
-  filter(identity >=70) %>% 
-  pull(subject)
-
-ids70 %in% xps
-ids70[!ids70 %in% xps]
-
-
-"XP_027187420.1" %in% xps
-
-
-ids50 <- res %>% 
-  filter(identity >=50) %>% 
-  pull(subject)
-
-ids50[!ids50 %in% xps]
-
-
-ids30 <- res %>% 
-  filter(identity >=30) %>% 
-  pull(subject)
-
-ids30[!ids30 %in% xps]
-
+## -----------------------------------------------------------------------------
+##                    Gene Family Table
+## -----------------------------------------------------------------------------
 
 # --- Make a gene family Table  
 
@@ -130,7 +192,11 @@ stripchart(tdat$mol_wt, vertical = TRUE, method = "jitter",
 
 # Make some tidy 
 rm(nisof, targets)
-rm(ca_mBox, hitFile, ids30, ids50, ids70)
+rm(ca_MADSbox, hitFile, ids30, ids50, ids70)
+rm(tlengths_query)
+rm(tlengths_sub)
+
+
 
 
 
@@ -168,7 +234,15 @@ genome(gr) = "ASM33114v1"
 save(seqs, gr, file = "res/sequences.rda")
 
 # Add seqlengths ???? (para tamano de chrs ver script despacho 'ranges').   
-seqinfo(tgr)
+seqinfo(gr)
+# NCBI, Frontier : https://www.ncbi.nlm.nih.gov/genome/?term=chickpea 
+# size = c(48.36, 36.63, 39.99, 49.19, 48.17, 59.46, 48.96, 16.48)
+genome(gr)
+isCircular(gr)
+seqlengths(gr) = c(NA, 48.36, 39.99, 49.19)
+gr
+
+
 
 ## Puedo a??adir metadatos GENEID to match gene information across different Genbank databases) 
 # Introduction to Bioconductor / Week 2/ Genes as GRanges / min 1.21
@@ -273,3 +347,89 @@ writeXStringSet(prom, filepath="res/promoters.fasta", format="fasta")
 
 
 # hacer estima de frecuencia de bases para crear datos sinteticos 
+## {Biostrings} Extract basic information about FASTA files
+## without actually loading the sequence data:
+length(fasta.seqlengths("res/promoters.fasta"))
+names(fasta.seqlengths("res/promoters.fasta"))
+fasta.seqlengths("res/promoters.fasta")
+
+# Read StringSet
+promoters <- readDNAStringSet("res/promoters.fasta")
+alphabetFrequency(promoters)
+dinucleotideFrequency(promoters)
+dinucleotideFrequency(promoters, as.prob = TRUE)
+dinucleotideFrequency(promoters[[1]], as.prob = TRUE, as.matrix = T)
+dinucleotideFrequency(promoters[[2]], as.prob = TRUE, as.matrix = T)
+sort(dinucleotideFrequency(promoters[[1]], as.prob = TRUE))
+sort(dinucleotideFrequency(promoters[[1]], as.prob = TRUE), decreasing = TRUE)
+head(sort(trinucleotideFrequency(promoters[[1]], as.prob = TRUE), 
+          decreasing = T))
+
+
+# Get the counts of oligonucleotides overlapping by one nucleotide 
+head(sort(oligonucleotideFrequency(promoters[[1]], width = 5, step = 4), decreasing = T))
+head(sort(oligonucleotideFrequency(promoters[[1]], width = 6, step = 5), decreasing = T))
+head(sort(oligonucleotideFrequency(promoters[[1]], width = 7, step = 6), decreasing = T))
+head(sort(oligonucleotideFrequency(promoters[[1]], width = 8, steo = 7), decreasing = T))
+
+letterFrequency(promoters[[1]], "GC", as.prob = T)
+matchPattern("TATATATA", promoters[[1]])
+countPattern("TATATATA", promoters[[1]])
+
+
+letterFrequency(promoters, "GC", as.prob = T)
+
+
+## Get the less and most represented 6-mers:
+f6 <- oligonucleotideFrequency(promoters[[1]], 6)
+f6[f6 == min(f6)]
+f6[f6 == max(f6)]
+
+
+## With 20-nucleotide forward and reverse probes:
+Fprobe <- "AGCTCCGAGTTCCTGCAATA"
+Rprobe <- "CGTTGTTCACAAATATGCGG"
+matchProbePair(Fprobe, Rprobe, promoters[[1]]) #theoretical amplicon : None
+
+
+
+
+
+
+letterFrequency(promoters, c("A", "C"), as.prob = T)
+alphabetFrequency(promoters, as.prob = T)[,1:4]
+
+# Base composition of the dataset 
+apply(alphabetFrequency(promoters, as.prob = T)[,1:4], 2, mean)
+prom_freq <- apply(alphabetFrequency(promoters, as.prob = T)[,1:4], 2, mean)
+
+
+# Weighted random sample
+sample(c(1, 2, 3), size = 10, replace = TRUE, prob = c(0.5, 0.1, 0.4))
+sample(c("A", "T", "C", "G"), size = 10, replace = TRUE, prob = c(0.25, 0.25, 0.25, 0.25))
+table(sample(c("A", "T", "C", "G"), size = 1000, replace = TRUE, prob = c(0.25, 0.25, 0.25, 0.25)))
+
+# Generate synthetic promoters
+
+prom_synth <- function(size, frequencies) {
+    
+  paste0(sample(c("A", "C", "G", "T"), size = 1500, replace = TRUE, prob = frequencies), collapse = "")
+}
+
+prom_synth(1500, prom_freq)
+
+
+# Run Monte Carlo simulation
+times = 5
+mc_prom_synth <-  replicate(times, prom_synth(1500, prom_freq))
+
+writeXStringSet(DNAStringSet(mc_prom_synth), filepath="res/promoters_synthetic.fasta", format="fasta")  
+
+
+
+# --- Outline ----
+
+# Search for number of occurrences in the actual dataset
+# Estimate %GC content
+# Estimate for number of occurrences in simulated dataset
+# Estimate P value for the n. occurrences in the actual dataset

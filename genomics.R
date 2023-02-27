@@ -71,7 +71,7 @@ getCopies <- function(ng, amplicon_len) {
     (ng * 6.0221*10**23) / (amplicon_len * 660 * 1*10**9)
     }
 
-# ng = amount of amplicon
+# ng = amount of amplicon
 # amplicon_len = length of amplicon
 # 660 g/mole = avg mass of 1 bp dsDNA
 
@@ -82,7 +82,7 @@ getCopies <- function(ng, amplicon_len) {
 
 # The file is downloaded by clicking selected boxes from the 'Sequences producing significant alignments' section.
 
-accs_tidy <- function(blast, acc_type){
+blast_accs_tidy <- function(blast, acc_type){
     
   ### ''' Take a csv table with Blast hits (downloaded from NCBI) and return a 
   ### character vector containing the accessions id. in a tidy way '''
@@ -122,7 +122,7 @@ accs_tidy <- function(blast, acc_type){
 ## Usage
 ## ncbi = "2MW2NVF9014-Alignment-HitTable.csv"
 ## hit_table  <- read.csv(ncbi, header= FALSE)
-## hits = accs_tidy(hit_table, acc_type = 'XP')
+## hits = blast_accs_tidy(hit_table, acc_type = 'XP')
 
 
 ##----------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ accs_tidy <- function(blast, acc_type){
 # this function is useless. In that case, use the function 'best_homolog'  
 # The file is downloaded by clicking 'Download / Hit Table(csv)' on top of the page (Edit and Resubmit, Save Search, ...)
 
-best_hit <- function(hitFile) {
+blast_best_hit <- function(hitFile) {
   # Read Downloaded Hit file
   hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
   # Chnage colnames
@@ -158,7 +158,7 @@ best_hit <- function(hitFile) {
 
 ## Usage
 ## Ex. multiple blastp searches (with 2 sequences)
-## best_hit("B1J2TDTZ01R-Alignment-HitTable.csv")
+## blast_best_hit("B1J2TDTZ01R-Alignment-HitTable.csv")
 
 
 
@@ -168,7 +168,7 @@ best_hit <- function(hitFile) {
 
 # The file is downloaded by clicking 'Download / Hit Table(csv)' on top of the page (Edit and Resubmit, Save Search, ...)
 
-best_homolog <- function(hitFile) {
+blast_best_homolog <- function(hitFile) {
   
   ### ''' Take a csv table with Blast hits and return a 
   ### subset containing only the best hit for each query '''
@@ -193,7 +193,78 @@ best_homolog <- function(hitFile) {
 
 ## Usage
 ## Ex. multiple blastp searches (with 2 sequences)
-## best_homolog("B1J2TDTZ01R-Alignment-HitTable.csv"
+## blast_best_homolog("B1J2TDTZ01R-Alignment-HitTable.csv")
+
+
+
+##----------------------------------------------------------------------------------------------
+## Extract the Hit Table filtering by identity and coverage 
+## ---------------------------------------------------------------------------------------------
+
+# The file is downloaded by clicking 'Download / Hit Table(csv)' on top of the page (Edit and Resubmit, Save Search, ...)
+# Coverage of the longer aa sequence 
+
+
+get_xp_length <- function(xp_id){
+  ### ''' Estimate protein length (aa)
+  
+  xpinfo <- entrez_summary(db = "protein", id = xp_id)
+  xpinfo$slen
+  
+}
+
+
+blast_homologs <- function(hitFile, ident, cover) {
+  
+  ### ''' Take a csv table with Blast hits and return a 
+  ### subset filteres by %Identity & %Coverage (longer sequence)
+  
+  # read downloaded Hit file
+  hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
+  
+  # change colnames
+  colnames(hit) = c("query", "subject", "identity", "align_length", "mismatches",
+                    "gap_opens", "q.start", "q.end", "s.start", "s.end", "evalue",
+                    "bit_score", "%positives")
+  
+  # make a table_length for queries & subjects 
+  queries <- hit %>% 
+    pull(query) %>% 
+    unique()
+  
+  tlengths_query = tibble(query = queries, len.query = sapply(query, function(i) get_xp_length(i)))
+  
+  subjects <- hit %>% 
+    pull(subject) %>% 
+    unique()
+  
+  tlengths_sub = tibble(subject = subjects, len.sub = sapply(subject, function(i) get_xp_length(i)))
+  
+  
+  # combine hit_table with queries & subjects lengths 
+  # estimate coverage (longer sequence)
+  # apply filters : identity * coverage
+  hit %>% 
+    tibble() %>% 
+    select(-c(align_length, bit_score, "%positives", mismatches, gap_opens)) %>% 
+    right_join(tlengths_query, by = "query") %>% 
+    right_join(tlengths_sub,   by = "subject") %>% 
+    mutate(cov.query = (q.end - q.start + 1)/len.query, 
+           cov.sub = (s.end - s.start + 1)/len.sub) %>% 
+    mutate(cov_long = case_when(len.query > len.sub ~ cov.query*100, 
+                                len.query < len.sub ~ cov.sub*100, 
+                                TRUE ~ cov.query*100)) %>% 
+    select(-c(q.start, q.end, s.start, s.end, len.query, len.sub, cov.query, cov.sub)) %>% 
+    filter(identity >= ident, cov_long >= cover) %>% 
+    select(query, subject, identity, cov_long, evalue) %>% 
+    arrange(identity)
+  
+  
+}
+
+## Usage
+## blast_homologs("B1J2TDTZ01R-Alignment-HitTable.csv", ident = 55, cover = 85)
+
 
 
 
