@@ -1,0 +1,1001 @@
+Sequence Name	Annotation GO ID	Annotation GO Term	Annotation GO Category
+XP_004495769.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495769.1	GO:0005515	protein binding	Molecular Function
+XP_004495769.1	GO:0005634	nucleus	Cellular Component
+XP_004495769.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495769.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495769.1	GO:0016020	membrane	Cellular Component
+XP_004495769.1	GO:0016301	kinase activity	Molecular Function
+XP_004495769.1	GO:0036211	protein modification process	Biological Process
+XP_012569857.1			
+XP_004495942.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495942.1	GO:0006950	response to stress	Biological Process
+XP_004495942.1	GO:0016020	membrane	Cellular Component
+XP_012569896.1	GO:0009987	cellular process	Biological Process
+XP_012569896.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012569896.1	GO:0036211	protein modification process	Biological Process
+XP_004495586.1	GO:0005575	cellular_component	Cellular Component
+XP_004495586.1	GO:0006810	transport	Biological Process
+XP_004495586.1	GO:0009987	cellular process	Biological Process
+XP_004495770.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495770.1	GO:0006629	lipid metabolic process	Biological Process
+XP_004495770.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495770.1	GO:0009416	response to light stimulus	Biological Process
+XP_004495770.1	GO:0009908	flower development	Biological Process
+XP_004495770.1	GO:0016049	cell growth	Biological Process
+XP_004495407.1	GO:0005488	binding	Molecular Function
+XP_004495407.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495407.1	GO:0006091	generation of precursor metabolites and energy	Biological Process
+XP_004495407.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495407.1	GO:0009056	catabolic process	Biological Process
+XP_004495407.1	GO:0009507	chloroplast	Cellular Component
+XP_004495407.1	GO:0016020	membrane	Cellular Component
+XP_004495407.1	GO:0016301	kinase activity	Molecular Function
+XP_004495679.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495679.1	GO:0003774	cytoskeletal motor activity	Molecular Function
+XP_004495679.1	GO:0005515	protein binding	Molecular Function
+XP_004495679.1	GO:0009987	cellular process	Biological Process
+XP_004495943.1	GO:0016740	transferase activity	Molecular Function
+XP_004495587.1	GO:0006950	response to stress	Biological Process
+XP_004495771.1	GO:0005515	protein binding	Molecular Function
+XP_004495771.1	GO:0006259	DNA metabolic process	Biological Process
+XP_004495771.1	GO:0006950	response to stress	Biological Process
+XP_004495771.1	GO:0036211	protein modification process	Biological Process
+XP_027189027.1	GO:0005654	nucleoplasm	Cellular Component
+XP_027189027.1	GO:0016020	membrane	Cellular Component
+XP_027189027.1	GO:0036211	protein modification process	Biological Process
+XP_004495498.2	GO:0003677	DNA binding	Molecular Function
+XP_004495498.2	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_027189813.1	GO:0009987	cellular process	Biological Process
+XP_027189813.1	GO:0016787	hydrolase activity	Molecular Function
+XP_027189813.1	GO:0036211	protein modification process	Biological Process
+XP_004495860.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495944.1	GO:0000003	reproduction	Biological Process
+XP_004495944.1	GO:0005515	protein binding	Molecular Function
+XP_004495944.1	GO:0005856	cytoskeleton	Cellular Component
+XP_004495944.1	GO:0007049	cell cycle	Biological Process
+XP_004495944.1	GO:0016043	cellular component organization	Biological Process
+XP_027189323.1	GO:0003677	DNA binding	Molecular Function
+XP_004495588.1			
+XP_027189655.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189655.1	GO:0003774	cytoskeletal motor activity	Molecular Function
+XP_027189655.1	GO:0005515	protein binding	Molecular Function
+XP_027189655.1	GO:0009987	cellular process	Biological Process
+XP_027189130.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189130.1	GO:0005215	transporter activity	Molecular Function
+XP_027189130.1	GO:0005886	plasma membrane	Cellular Component
+XP_027189130.1	GO:0006810	transport	Biological Process
+XP_027189130.1	GO:0009987	cellular process	Biological Process
+XP_027189130.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495945.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495945.1	GO:0003677	DNA binding	Molecular Function
+XP_004495945.1	GO:0006259	DNA metabolic process	Biological Process
+XP_004495945.1	GO:0006950	response to stress	Biological Process
+XP_027189977.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189977.1	GO:0005634	nucleus	Cellular Component
+XP_027189977.1	GO:0016020	membrane	Cellular Component
+XP_027189977.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495682.1	GO:0003677	DNA binding	Molecular Function
+XP_004495682.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495682.1	GO:0006259	DNA metabolic process	Biological Process
+XP_004495682.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495682.1	GO:0016020	membrane	Cellular Component
+XP_004495682.1	GO:0065009	regulation of molecular function	Biological Process
+XP_004495773.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495773.1	GO:0009987	cellular process	Biological Process
+XP_004495773.1	GO:0016301	kinase activity	Molecular Function
+XP_004495773.1	GO:0036211	protein modification process	Biological Process
+XP_004495949.1	GO:0005215	transporter activity	Molecular Function
+XP_004495949.1	GO:0006810	transport	Biological Process
+XP_004495949.1	GO:0009987	cellular process	Biological Process
+XP_004495949.1	GO:0016020	membrane	Cellular Component
+XP_004495590.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495590.1	GO:0008219	cell death	Biological Process
+XP_004495590.1	GO:0009507	chloroplast	Cellular Component
+XP_004495590.1	GO:0009579	thylakoid	Cellular Component
+XP_004495590.1	GO:0016020	membrane	Cellular Component
+XP_004495590.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495590.1	GO:0019538	protein metabolic process	Biological Process
+XP_027189604.1	GO:0005634	nucleus	Cellular Component
+XP_027189604.1	GO:0016020	membrane	Cellular Component
+XP_004495774.1	GO:0016740	transferase activity	Molecular Function
+XP_027189736.1	GO:0005773	vacuole	Cellular Component
+XP_027189736.1	GO:0006810	transport	Biological Process
+XP_027189736.1	GO:0016020	membrane	Cellular Component
+XP_004495865.2			
+XP_004495591.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495591.1	GO:0005515	protein binding	Molecular Function
+XP_004495591.1	GO:0009987	cellular process	Biological Process
+XP_004495591.1	GO:0016301	kinase activity	Molecular Function
+XP_004495591.1	GO:0036211	protein modification process	Biological Process
+XP_004495685.1	GO:0005515	protein binding	Molecular Function
+XP_004495685.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495685.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495502.1	GO:0005515	protein binding	Molecular Function
+XP_004495502.1	GO:0005773	vacuole	Cellular Component
+XP_004495502.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495502.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495502.1	GO:0006950	response to stress	Biological Process
+XP_004495502.1	GO:0009056	catabolic process	Biological Process
+XP_004495502.1	GO:0009987	cellular process	Biological Process
+XP_004495502.1	GO:0019538	protein metabolic process	Biological Process
+XP_004495502.1	GO:0042221	response to chemical	Biological Process
+XP_004496032.1	GO:0003677	DNA binding	Molecular Function
+XP_004496032.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004496032.1	GO:0005515	protein binding	Molecular Function
+XP_004495777.1			
+XP_004495592.1	GO:0016740	transferase activity	Molecular Function
+XP_004495503.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495503.1	GO:0005886	plasma membrane	Cellular Component
+XP_012569883.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004495593.1	GO:0005829	cytosol	Cellular Component
+XP_004495951.1	GO:0003723	RNA binding	Molecular Function
+XP_004495951.1	GO:0005515	protein binding	Molecular Function
+XP_004495951.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495505.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495505.1	GO:0009987	cellular process	Biological Process
+XP_004495505.1	GO:0016301	kinase activity	Molecular Function
+XP_004495505.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_004495505.1	GO:0036211	protein modification process	Biological Process
+XP_004495687.1	GO:0005515	protein binding	Molecular Function
+XP_004495687.1	GO:0009507	chloroplast	Cellular Component
+XP_004495687.1	GO:0016020	membrane	Cellular Component
+XP_012569928.1	GO:0006810	transport	Biological Process
+XP_012569928.1	GO:0009987	cellular process	Biological Process
+XP_027189979.1			
+XP_004495418.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495418.1	GO:0005773	vacuole	Cellular Component
+XP_004495418.1	GO:0005794	Golgi apparatus	Cellular Component
+XP_004495418.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495418.1	GO:0006810	transport	Biological Process
+XP_004495418.1	GO:0009987	cellular process	Biological Process
+XP_004495418.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495868.1	GO:0005515	protein binding	Molecular Function
+XP_004495868.1	GO:0016043	cellular component organization	Biological Process
+XP_004495868.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495868.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_004495952.1	GO:0003723	RNA binding	Molecular Function
+XP_004495952.1	GO:0005198	structural molecule activity	Molecular Function
+XP_004495952.1	GO:0005840	ribosome	Cellular Component
+XP_004495952.1	GO:0006412	translation	Biological Process
+XP_027189556.1	GO:0000003	reproduction	Biological Process
+XP_027189556.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189556.1	GO:0003774	cytoskeletal motor activity	Molecular Function
+XP_027189556.1	GO:0005515	protein binding	Molecular Function
+XP_027189556.1	GO:0005737	cytoplasm	Cellular Component
+XP_027189556.1	GO:0005856	cytoskeleton	Cellular Component
+XP_027189556.1	GO:0006810	transport	Biological Process
+XP_027189556.1	GO:0016020	membrane	Cellular Component
+XP_027189556.1	GO:0016043	cellular component organization	Biological Process
+XP_027189556.1	GO:0016049	cell growth	Biological Process
+XP_027189556.1	GO:0016787	hydrolase activity	Molecular Function
+XP_027189556.1	GO:0030154	cell differentiation	Biological Process
+XP_027189556.1	GO:0048856	anatomical structure development	Biological Process
+XP_004495688.1	GO:0005515	protein binding	Molecular Function
+XP_004495779.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495779.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495779.1	GO:0009987	cellular process	Biological Process
+XP_004495779.1	GO:0016740	transferase activity	Molecular Function
+XP_012569911.2	GO:0003723	RNA binding	Molecular Function
+XP_012569911.2	GO:0005737	cytoplasm	Cellular Component
+XP_012569911.2	GO:0008152	metabolic process	Biological Process
+XP_027189734.1	GO:0000003	reproduction	Biological Process
+XP_027189734.1	GO:0005215	transporter activity	Molecular Function
+XP_027189734.1	GO:0005886	plasma membrane	Cellular Component
+XP_027189734.1	GO:0009791	post-embryonic development	Biological Process
+XP_027189734.1	GO:0042221	response to chemical	Biological Process
+XP_004495869.1	GO:0005515	protein binding	Molecular Function
+XP_004495869.1	GO:0016043	cellular component organization	Biological Process
+XP_004495869.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495869.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_004495954.1	GO:0016020	membrane	Cellular Component
+XP_004495954.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495419.1	GO:0008152	metabolic process	Biological Process
+XP_004495419.1	GO:0016740	transferase activity	Molecular Function
+XP_004495689.1			
+XP_027189165.1	GO:0005737	cytoplasm	Cellular Component
+XP_027189165.1	GO:0009058	biosynthetic process	Biological Process
+XP_027189165.1	GO:0009987	cellular process	Biological Process
+XP_027189165.1	GO:0016740	transferase activity	Molecular Function
+XP_012569871.1	GO:0003723	RNA binding	Molecular Function
+XP_012569871.1	GO:0005515	protein binding	Molecular Function
+XP_012569871.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495507.1	GO:0005515	protein binding	Molecular Function
+XP_004495871.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495871.1	GO:0009987	cellular process	Biological Process
+XP_004495871.1	GO:0016301	kinase activity	Molecular Function
+XP_004495871.1	GO:0036211	protein modification process	Biological Process
+XP_004495420.1	GO:0007165	signal transduction	Biological Process
+XP_004495690.1	GO:0005515	protein binding	Molecular Function
+XP_004495690.1	GO:0016043	cellular component organization	Biological Process
+XP_004495690.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495690.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_012569932.2	GO:0003723	RNA binding	Molecular Function
+XP_012569932.2	GO:0004518	nuclease activity	Molecular Function
+XP_012569932.2	GO:0005634	nucleus	Cellular Component
+XP_012569932.2	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_012569932.2	GO:0009056	catabolic process	Biological Process
+XP_012569932.2	GO:0016020	membrane	Cellular Component
+XP_004495955.1	GO:0005215	transporter activity	Molecular Function
+XP_004495955.1	GO:0005488	binding	Molecular Function
+XP_004495955.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495955.1	GO:0006810	transport	Biological Process
+XP_004495955.1	GO:0016020	membrane	Cellular Component
+XP_004495955.1	GO:0016043	cellular component organization	Biological Process
+XP_027189215.1	GO:0005634	nucleus	Cellular Component
+XP_027189215.1	GO:0016020	membrane	Cellular Component
+XP_004495596.1	GO:0005634	nucleus	Cellular Component
+XP_004495596.1	GO:0007275	multicellular organism development	Biological Process
+XP_004495596.1	GO:0016020	membrane	Cellular Component
+XP_004495596.1	GO:0140110	transcription regulator activity	Molecular Function
+XP_004495421.1	GO:0005515	protein binding	Molecular Function
+XP_004495421.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_004495691.1	GO:0005515	protein binding	Molecular Function
+XP_004495691.1	GO:0016043	cellular component organization	Biological Process
+XP_004495691.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495691.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_012569933.1	GO:0005634	nucleus	Cellular Component
+XP_012569933.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_012569933.1	GO:0009058	biosynthetic process	Biological Process
+XP_012569933.1	GO:0016020	membrane	Cellular Component
+XP_004496037.1	GO:0016020	membrane	Cellular Component
+XP_004495874.1	GO:0003677	DNA binding	Molecular Function
+XP_004495874.1	GO:0005634	nucleus	Cellular Component
+AGG91153.1	GO:0000166	nucleotide binding	Molecular Function
+AGG91153.1	GO:0003824	catalytic activity	Molecular Function
+AGG91153.1	GO:0005737	cytoplasm	Cellular Component
+AGG91153.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495508.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495508.1	GO:0005488	binding	Molecular Function
+XP_004495508.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495508.1	GO:0008152	metabolic process	Biological Process
+XP_004495508.1	GO:0009987	cellular process	Biological Process
+XP_004495597.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495597.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495597.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495597.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495597.1	GO:0009507	chloroplast	Cellular Component
+XP_004495597.1	GO:0016020	membrane	Cellular Component
+XP_004495422.1	GO:0040007	growth	Biological Process
+XP_004495692.1	GO:0003723	RNA binding	Molecular Function
+XP_004495692.1	GO:0005198	structural molecule activity	Molecular Function
+XP_004495692.1	GO:0005829	cytosol	Cellular Component
+XP_004495692.1	GO:0005840	ribosome	Cellular Component
+XP_004495692.1	GO:0006412	translation	Biological Process
+XP_004495957.1	GO:0005515	protein binding	Molecular Function
+XP_004495957.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_004495957.1	GO:0065009	regulation of molecular function	Biological Process
+XP_004495509.1	GO:0016020	membrane	Cellular Component
+XP_012569997.2	GO:0005488	binding	Molecular Function
+XP_012569885.1	GO:0005198	structural molecule activity	Molecular Function
+XP_012569885.1	GO:0005840	ribosome	Cellular Component
+XP_012569885.1	GO:0006412	translation	Biological Process
+XP_004495424.1	GO:0005773	vacuole	Cellular Component
+XP_004495424.1	GO:0005794	Golgi apparatus	Cellular Component
+XP_004495424.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495424.1	GO:0016740	transferase activity	Molecular Function
+XP_004495693.1	GO:0016020	membrane	Cellular Component
+XP_012569912.1	GO:0005634	nucleus	Cellular Component
+XP_012569912.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_012569912.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495958.1	GO:0016043	cellular component organization	Biological Process
+XP_012569934.1	GO:0005488	binding	Molecular Function
+XP_027189696.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189696.1	GO:0005737	cytoplasm	Cellular Component
+XP_027189696.1	GO:0007165	signal transduction	Biological Process
+XP_027189696.1	GO:0016301	kinase activity	Molecular Function
+XP_027189696.1	GO:0036211	protein modification process	Biological Process
+XP_004495875.1	GO:0006950	response to stress	Biological Process
+XP_004495875.1	GO:0007154	cell communication	Biological Process
+XP_004495875.1	GO:0009605	response to external stimulus	Biological Process
+NP_001287926.1	GO:0016020	membrane	Cellular Component
+XP_004496040.1	GO:0003676	nucleic acid binding	Molecular Function
+XP_004496040.1	GO:0004518	nuclease activity	Molecular Function
+XP_004496040.1	GO:0005634	nucleus	Cellular Component
+XP_004496040.1	GO:0005737	cytoplasm	Cellular Component
+XP_004496040.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004496040.1	GO:0016020	membrane	Cellular Component
+XP_004495959.1			
+XP_027188966.1	GO:0005515	protein binding	Molecular Function
+XP_027188966.1	GO:0005737	cytoplasm	Cellular Component
+XP_027188966.1	GO:0005856	cytoskeleton	Cellular Component
+XP_027188966.1	GO:0016043	cellular component organization	Biological Process
+XP_004495784.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495784.1	GO:0006629	lipid metabolic process	Biological Process
+XP_004495784.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495784.1	GO:0009987	cellular process	Biological Process
+XP_004495876.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495876.1	GO:0005488	binding	Molecular Function
+XP_004495876.1	GO:0005618	cell wall	Cellular Component
+XP_004495876.1	GO:0006950	response to stress	Biological Process
+XP_004495876.1	GO:0009056	catabolic process	Biological Process
+XP_004495876.1	GO:0009987	cellular process	Biological Process
+XP_004495695.1	GO:0003723	RNA binding	Molecular Function
+XP_004495695.1	GO:0005198	structural molecule activity	Molecular Function
+XP_004495695.1	GO:0005840	ribosome	Cellular Component
+XP_004495695.1	GO:0006412	translation	Biological Process
+XP_004495960.1	GO:0005730	nucleolus	Cellular Component
+XP_004495960.1	GO:0009987	cellular process	Biological Process
+XP_004495960.1	GO:0016020	membrane	Cellular Component
+XP_004495426.1	GO:0003677	DNA binding	Molecular Function
+XP_012569950.1	GO:0009056	catabolic process	Biological Process
+XP_012569950.1	GO:0009987	cellular process	Biological Process
+XP_012569950.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012569950.1	GO:0036211	protein modification process	Biological Process
+XP_004495877.1			
+XP_004495696.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495696.1	GO:0016020	membrane	Cellular Component
+XP_004495696.1	GO:0016043	cellular component organization	Biological Process
+XP_004495787.1			
+XP_004495961.1	GO:0005488	binding	Molecular Function
+XP_004495961.1	GO:0016740	transferase activity	Molecular Function
+XP_004495961.1	GO:0036211	protein modification process	Biological Process
+XP_012570000.1	GO:0005886	plasma membrane	Cellular Component
+XP_012570000.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_012570000.1	GO:0016787	hydrolase activity	Molecular Function
+CAA10288.1	GO:0000166	nucleotide binding	Molecular Function
+CAA10288.1	GO:0005737	cytoplasm	Cellular Component
+CAA10288.1	GO:0007165	signal transduction	Biological Process
+CAA10288.1	GO:0016301	kinase activity	Molecular Function
+CAA10288.1	GO:0036211	protein modification process	Biological Process
+XP_004495604.1	GO:0005488	binding	Molecular Function
+XP_004495697.1	GO:0003723	RNA binding	Molecular Function
+XP_004495697.1	GO:0005634	nucleus	Cellular Component
+XP_004495697.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495697.1	GO:0016020	membrane	Cellular Component
+XP_004496043.1	GO:0005634	nucleus	Cellular Component
+XP_004496043.1	GO:0007165	signal transduction	Biological Process
+XP_004496043.1	GO:0008152	metabolic process	Biological Process
+XP_004496043.1	GO:0016020	membrane	Cellular Component
+XP_004496043.1	GO:0016301	kinase activity	Molecular Function
+XP_004495428.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495428.1	GO:0005634	nucleus	Cellular Component
+XP_004495428.1	GO:0005829	cytosol	Cellular Component
+XP_004495428.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495428.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495428.1	GO:0016020	membrane	Cellular Component
+XP_004495428.1	GO:0016301	kinase activity	Molecular Function
+XP_004495879.1	GO:0005488	binding	Molecular Function
+XP_004495879.1	GO:0009987	cellular process	Biological Process
+XP_004495879.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495879.1	GO:0036211	protein modification process	Biological Process
+XP_004495963.1			
+XP_004495514.1	GO:0016740	transferase activity	Molecular Function
+XP_027189606.1	GO:0003723	RNA binding	Molecular Function
+XP_027189606.1	GO:0005634	nucleus	Cellular Component
+XP_027189606.1	GO:0016020	membrane	Cellular Component
+XP_004495788.1	GO:0005488	binding	Molecular Function
+XP_004496044.1			
+XP_004495429.2	GO:0000166	nucleotide binding	Molecular Function
+XP_004495429.2	GO:0005634	nucleus	Cellular Component
+XP_004495429.2	GO:0005829	cytosol	Cellular Component
+XP_004495429.2	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495429.2	GO:0009058	biosynthetic process	Biological Process
+XP_004495429.2	GO:0016020	membrane	Cellular Component
+XP_004495429.2	GO:0016301	kinase activity	Molecular Function
+XP_004495880.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495880.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495515.1	GO:0008289	lipid binding	Molecular Function
+XP_027188940.1			
+XP_027189760.1			
+XP_004495430.1			
+XP_027189894.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_027189894.1	GO:0016787	hydrolase activity	Molecular Function
+XP_027189665.1	GO:0005515	protein binding	Molecular Function
+XP_027189665.1	GO:0016043	cellular component organization	Biological Process
+XP_004495881.2	GO:0006950	response to stress	Biological Process
+XP_004495881.2	GO:0009605	response to external stimulus	Biological Process
+XP_004495881.2	GO:0009607	response to biotic stimulus	Biological Process
+XP_012570007.1	GO:0016020	membrane	Cellular Component
+XP_027189988.1			
+XP_004495431.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495431.1	GO:0005102	signaling receptor binding	Molecular Function
+XP_004495431.1	GO:0009987	cellular process	Biological Process
+XP_004495431.1	GO:0016301	kinase activity	Molecular Function
+XP_004495431.1	GO:0036211	protein modification process	Biological Process
+XP_027189897.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_027189897.1	GO:0016787	hydrolase activity	Molecular Function
+NP_001296617.1	GO:0003677	DNA binding	Molecular Function
+NP_001296617.1	GO:0003682	chromatin binding	Molecular Function
+NP_001296617.1	GO:0005198	structural molecule activity	Molecular Function
+NP_001296617.1	GO:0005634	nucleus	Cellular Component
+NP_001296617.1	GO:0006259	DNA metabolic process	Biological Process
+NP_001296617.1	GO:0016020	membrane	Cellular Component
+NP_001296617.1	GO:0016043	cellular component organization	Biological Process
+XP_004495882.2	GO:0003677	DNA binding	Molecular Function
+XP_004495882.2	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004495882.2	GO:0005634	nucleus	Cellular Component
+XP_004495882.2	GO:0016020	membrane	Cellular Component
+XP_027189755.1	GO:0005198	structural molecule activity	Molecular Function
+XP_027189755.1	GO:0005635	nuclear envelope	Cellular Component
+XP_027189755.1	GO:0005773	vacuole	Cellular Component
+XP_027189755.1	GO:0005886	plasma membrane	Cellular Component
+XP_027189755.1	GO:0006810	transport	Biological Process
+XP_027189755.1	GO:0016043	cellular component organization	Biological Process
+XP_004495791.1	GO:0005215	transporter activity	Molecular Function
+XP_004495791.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495791.1	GO:0006810	transport	Biological Process
+XP_004495791.1	GO:0016020	membrane	Cellular Component
+XP_004495791.1	GO:0016043	cellular component organization	Biological Process
+XP_004496047.1			
+XP_027189794.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189891.1	GO:0003723	RNA binding	Molecular Function
+XP_027189891.1	GO:0005730	nucleolus	Cellular Component
+XP_027189891.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_027189891.1	GO:0016020	membrane	Cellular Component
+XP_004495609.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495609.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495609.1	GO:0009987	cellular process	Biological Process
+XP_004495609.1	GO:0016301	kinase activity	Molecular Function
+XP_004495609.1	GO:0036211	protein modification process	Biological Process
+XP_004495609.1	GO:0038023	signaling receptor activity	Molecular Function
+XP_027189854.1	GO:0005515	protein binding	Molecular Function
+XP_004495792.1			
+XP_004495610.1			
+XP_004495884.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495884.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495884.1	GO:0006810	transport	Biological Process
+XP_004495884.1	GO:0009987	cellular process	Biological Process
+XP_004495884.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495550.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495550.1	GO:0009987	cellular process	Biological Process
+XP_004495550.1	GO:0016301	kinase activity	Molecular Function
+XP_004495550.1	GO:0036211	protein modification process	Biological Process
+XP_027188943.1	GO:0005488	binding	Molecular Function
+XP_027188943.1	GO:0005739	mitochondrion	Cellular Component
+XP_027188943.1	GO:0016020	membrane	Cellular Component
+XP_027188943.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495996.1	GO:0016020	membrane	Cellular Component
+XP_004495734.1	GO:0016020	membrane	Cellular Component
+XP_004495908.1			
+XP_012569919.1	GO:0005515	protein binding	Molecular Function
+XP_012569919.1	GO:0005634	nucleus	Cellular Component
+XP_012569919.1	GO:0005737	cytoplasm	Cellular Component
+XP_012569919.1	GO:0016020	membrane	Cellular Component
+XP_012569919.1	GO:0016740	transferase activity	Molecular Function
+XP_012569919.1	GO:0036211	protein modification process	Biological Process
+AIA26574.1	GO:0005515	protein binding	Molecular Function
+AIA26574.1	GO:0016787	hydrolase activity	Molecular Function
+AIA26574.1	GO:0019538	protein metabolic process	Biological Process
+XP_004495735.2	GO:0003824	catalytic activity	Molecular Function
+XP_012570012.1			
+XP_027189663.1	GO:0005488	binding	Molecular Function
+XP_027189663.1	GO:0005575	cellular_component	Cellular Component
+XP_012569863.1	GO:0003723	RNA binding	Molecular Function
+XP_012569863.1	GO:0005634	nucleus	Cellular Component
+XP_012569863.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_012569863.1	GO:0016020	membrane	Cellular Component
+XP_012569863.1	GO:0016043	cellular component organization	Biological Process
+XP_004495736.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012570015.1	GO:0005515	protein binding	Molecular Function
+XP_004495738.1	GO:0005488	binding	Molecular Function
+XP_004495826.1	GO:0005488	binding	Molecular Function
+XP_004495826.1	GO:0005618	cell wall	Cellular Component
+XP_004495826.1	GO:0006810	transport	Biological Process
+XP_004495826.1	GO:0007275	multicellular organism development	Biological Process
+XP_004495826.1	GO:0009987	cellular process	Biological Process
+XP_004495911.1	GO:0005488	binding	Molecular Function
+XP_004495911.1	GO:0005622	intracellular anatomical structure	Cellular Component
+NP_001351837.1			
+XP_004495465.3	GO:0005515	protein binding	Molecular Function
+XP_004495465.3	GO:0005634	nucleus	Cellular Component
+XP_004495465.3	GO:0009987	cellular process	Biological Process
+XP_004495465.3	GO:0016020	membrane	Cellular Component
+XP_004495465.3	GO:0016740	transferase activity	Molecular Function
+XP_004495465.3	GO:0036211	protein modification process	Biological Process
+XP_027189986.1	GO:0005515	protein binding	Molecular Function
+XP_027189986.1	GO:0009058	biosynthetic process	Biological Process
+XP_027189986.1	GO:0009987	cellular process	Biological Process
+XP_027189986.1	GO:0016740	transferase activity	Molecular Function
+XP_027189986.1	GO:0036211	protein modification process	Biological Process
+XP_004495827.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495827.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495827.1	GO:0005829	cytosol	Cellular Component
+XP_004495827.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495827.1	GO:0006412	translation	Biological Process
+XP_004495644.1	GO:0005515	protein binding	Molecular Function
+XP_004495644.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495644.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495739.1	GO:0005515	protein binding	Molecular Function
+XP_004495913.1	GO:0016020	membrane	Cellular Component
+XP_004496002.1	GO:0016020	membrane	Cellular Component
+XP_004495829.1	GO:0005515	protein binding	Molecular Function
+XP_004495829.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495829.1	GO:0007165	signal transduction	Biological Process
+XP_004495829.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495829.1	GO:0009416	response to light stimulus	Biological Process
+XP_004495829.1	GO:0009605	response to external stimulus	Biological Process
+XP_004495829.1	GO:0016301	kinase activity	Molecular Function
+XP_012569978.1	GO:0005215	transporter activity	Molecular Function
+XP_012569978.1	GO:0006810	transport	Biological Process
+XP_012569978.1	GO:0009987	cellular process	Biological Process
+XP_012569978.1	GO:0016020	membrane	Cellular Component
+XP_004495740.1	GO:0005634	nucleus	Cellular Component
+XP_004495740.1	GO:0006259	DNA metabolic process	Biological Process
+XP_004495740.1	GO:0016020	membrane	Cellular Component
+XP_012569990.1	GO:0006629	lipid metabolic process	Biological Process
+XP_012569990.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004496003.1	GO:0007165	signal transduction	Biological Process
+XP_004496003.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_004495646.1	GO:0005515	protein binding	Molecular Function
+XP_012569918.2	GO:0000166	nucleotide binding	Molecular Function
+XP_012569918.2	GO:0005515	protein binding	Molecular Function
+XP_012569918.2	GO:0005886	plasma membrane	Cellular Component
+XP_012569918.2	GO:0007165	signal transduction	Biological Process
+XP_012569918.2	GO:0009719	response to endogenous stimulus	Biological Process
+XP_012569918.2	GO:0016301	kinase activity	Molecular Function
+XP_012569918.2	GO:0036211	protein modification process	Biological Process
+XP_012569918.2	GO:0042221	response to chemical	Biological Process
+XP_004495742.1	GO:0003677	DNA binding	Molecular Function
+XP_004495742.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004495742.1	GO:0005515	protein binding	Molecular Function
+XP_004495742.1	GO:0005634	nucleus	Cellular Component
+XP_004495742.1	GO:0016020	membrane	Cellular Component
+XP_004495915.1	GO:0005515	protein binding	Molecular Function
+XP_004495915.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495915.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495651.1	GO:0005515	protein binding	Molecular Function
+XP_004495557.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012569915.1			
+XP_004496004.1	GO:0005515	protein binding	Molecular Function
+XP_004496004.1	GO:0005730	nucleolus	Cellular Component
+XP_004496004.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004496004.1	GO:0009058	biosynthetic process	Biological Process
+XP_004496004.1	GO:0016020	membrane	Cellular Component
+XP_004495466.1	GO:0016020	membrane	Cellular Component
+XP_004495466.1	GO:0016740	transferase activity	Molecular Function
+XP_004495743.1	GO:0005488	binding	Molecular Function
+XP_004495558.1			
+XP_004495831.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495831.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495831.1	GO:0005829	cytosol	Cellular Component
+XP_004495831.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495831.1	GO:0006412	translation	Biological Process
+XP_004496006.1	GO:0005515	protein binding	Molecular Function
+XP_004496006.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495467.1	GO:0005515	protein binding	Molecular Function
+XP_004495917.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495917.1	GO:0006810	transport	Biological Process
+XP_004495917.1	GO:0016020	membrane	Cellular Component
+XP_004495917.1	GO:0016043	cellular component organization	Biological Process
+XP_027189668.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189668.1	GO:0009987	cellular process	Biological Process
+XP_027189668.1	GO:0016301	kinase activity	Molecular Function
+XP_027189668.1	GO:0036211	protein modification process	Biological Process
+XP_004495559.1	GO:0005515	protein binding	Molecular Function
+XP_004495559.1	GO:0005773	vacuole	Cellular Component
+XP_004495559.1	GO:0005794	Golgi apparatus	Cellular Component
+XP_004495559.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495559.1	GO:0006810	transport	Biological Process
+XP_004495559.1	GO:0009987	cellular process	Biological Process
+XP_012569965.1	GO:0000166	nucleotide binding	Molecular Function
+XP_012569965.1	GO:0003676	nucleic acid binding	Molecular Function
+XP_004495472.1	GO:0003723	RNA binding	Molecular Function
+XP_004495472.1	GO:0005515	protein binding	Molecular Function
+XP_004495472.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_027189181.1			
+XP_012569867.1	GO:0000003	reproduction	Biological Process
+XP_012569867.1	GO:0003677	DNA binding	Molecular Function
+XP_012569867.1	GO:0005634	nucleus	Cellular Component
+XP_012569867.1	GO:0006259	DNA metabolic process	Biological Process
+XP_012569867.1	GO:0006950	response to stress	Biological Process
+XP_012569867.1	GO:0007049	cell cycle	Biological Process
+XP_012569867.1	GO:0009416	response to light stimulus	Biological Process
+XP_012569867.1	GO:0016020	membrane	Cellular Component
+XP_012569867.1	GO:0016043	cellular component organization	Biological Process
+XP_027189914.1	GO:0003677	DNA binding	Molecular Function
+XP_004495833.1	GO:0005515	protein binding	Molecular Function
+XP_027189619.1			
+XP_004495918.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495918.1	GO:0005773	vacuole	Cellular Component
+XP_004495918.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495918.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495918.1	GO:0009987	cellular process	Biological Process
+CAA09459.1	GO:0003677	DNA binding	Molecular Function
+CAA09459.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+CAA09459.1	GO:0005515	protein binding	Molecular Function
+XP_004496008.1	GO:0005515	protein binding	Molecular Function
+XP_027189612.1	GO:0005515	protein binding	Molecular Function
+XP_027189612.1	GO:0005773	vacuole	Cellular Component
+XP_027189612.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_027189612.1	GO:0005886	plasma membrane	Cellular Component
+XP_027189612.1	GO:0007165	signal transduction	Biological Process
+XP_027189612.1	GO:0016301	kinase activity	Molecular Function
+XP_027189612.1	GO:0038023	signaling receptor activity	Molecular Function
+XP_012569936.1			
+XP_004495919.1			
+NP_001266154.1	GO:0003824	catalytic activity	Molecular Function
+NP_001266154.1	GO:0008152	metabolic process	Biological Process
+NP_001266154.1	GO:0009987	cellular process	Biological Process
+XP_012569881.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_012569881.1	GO:0016740	transferase activity	Molecular Function
+XP_004495835.1	GO:0008152	metabolic process	Biological Process
+XP_004495835.1	GO:0016787	hydrolase activity	Molecular Function
+XP_027189112.1	GO:0003824	catalytic activity	Molecular Function
+XP_027189112.1	GO:0005515	protein binding	Molecular Function
+XP_027189112.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_027189112.1	GO:0009058	biosynthetic process	Biological Process
+XP_027189311.1	GO:0005215	transporter activity	Molecular Function
+XP_027189311.1	GO:0006810	transport	Biological Process
+XP_027189311.1	GO:0009987	cellular process	Biological Process
+XP_027189311.1	GO:0016020	membrane	Cellular Component
+XP_012569900.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_012569900.1	GO:0005515	protein binding	Molecular Function
+XP_004495475.1			
+XP_004495836.1	GO:0005576	extracellular region	Cellular Component
+XP_004495836.1	GO:0016043	cellular component organization	Biological Process
+XP_027189100.1	GO:0003677	DNA binding	Molecular Function
+XP_027189100.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_027189100.1	GO:0005634	nucleus	Cellular Component
+XP_004495921.1			
+XP_012569879.1	GO:0009507	chloroplast	Cellular Component
+XP_012569879.1	GO:0016020	membrane	Cellular Component
+XP_004496011.1	GO:0005488	binding	Molecular Function
+XP_004495564.1			
+XP_004495922.1			
+XP_004495750.1	GO:0016020	membrane	Cellular Component
+XP_004496012.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004496012.1	GO:0019538	protein metabolic process	Biological Process
+XP_004495565.1	GO:0009507	chloroplast	Cellular Component
+XP_004495565.1	GO:0016020	membrane	Cellular Component
+XP_004495658.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495658.1	GO:0009987	cellular process	Biological Process
+XP_004495658.1	GO:0016740	transferase activity	Molecular Function
+XP_004495837.1	GO:0005634	nucleus	Cellular Component
+XP_004495837.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495837.1	GO:0016020	membrane	Cellular Component
+XP_004495476.1	GO:0003723	RNA binding	Molecular Function
+XP_004495476.1	GO:0005515	protein binding	Molecular Function
+XP_004495476.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495923.1			
+XP_012570001.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012569904.1	GO:0003723	RNA binding	Molecular Function
+XP_012569904.1	GO:0005215	transporter activity	Molecular Function
+XP_012569904.1	GO:0005622	intracellular anatomical structure	Cellular Component
+XP_012569904.1	GO:0005886	plasma membrane	Cellular Component
+XP_012569904.1	GO:0006810	transport	Biological Process
+XP_012569904.1	GO:0009987	cellular process	Biological Process
+XP_027189785.1	GO:0005773	vacuole	Cellular Component
+XP_027189785.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_027189785.1	GO:0005886	plasma membrane	Cellular Component
+XP_027189785.1	GO:0009987	cellular process	Biological Process
+XP_004495659.1			
+XP_004495838.1	GO:0009987	cellular process	Biological Process
+XP_004495838.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495838.1	GO:0036211	protein modification process	Biological Process
+XP_004495477.1	GO:0003676	nucleic acid binding	Molecular Function
+XP_004495925.1	GO:0016020	membrane	Cellular Component
+XP_004495751.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495751.1	GO:0016020	membrane	Cellular Component
+XP_004495567.1	GO:0005515	protein binding	Molecular Function
+XP_004495567.1	GO:0009507	chloroplast	Cellular Component
+XP_004495567.1	GO:0016020	membrane	Cellular Component
+XP_004495567.1	GO:0016043	cellular component organization	Biological Process
+XP_004495660.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495660.1	GO:0003677	DNA binding	Molecular Function
+XP_004495660.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495660.1	GO:0009056	catabolic process	Biological Process
+XP_004495660.1	GO:0016020	membrane	Cellular Component
+XP_004495660.1	GO:0016043	cellular component organization	Biological Process
+XP_004495660.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495660.1	GO:0019538	protein metabolic process	Biological Process
+XP_004495839.1	GO:0005488	binding	Molecular Function
+XP_004495839.1	GO:0005618	cell wall	Cellular Component
+XP_004495839.1	GO:0006810	transport	Biological Process
+XP_004495839.1	GO:0007275	multicellular organism development	Biological Process
+XP_004495839.1	GO:0009987	cellular process	Biological Process
+XP_004495478.1	GO:0016020	membrane	Cellular Component
+XP_004495568.1	GO:0005634	nucleus	Cellular Component
+XP_004495568.1	GO:0016020	membrane	Cellular Component
+XP_004495568.1	GO:0140110	transcription regulator activity	Molecular Function
+XP_004495661.1			
+XP_004495840.1			
+XP_004495926.1	GO:0005488	binding	Molecular Function
+XP_004495926.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495926.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495926.1	GO:0016740	transferase activity	Molecular Function
+XP_012570014.1	GO:0005515	protein binding	Molecular Function
+XP_004495569.1	GO:0005634	nucleus	Cellular Component
+XP_004495569.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495569.1	GO:0016020	membrane	Cellular Component
+XP_004495569.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495662.1			
+XP_004495754.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012569958.1			
+XP_004495928.1	GO:0005634	nucleus	Cellular Component
+XP_004495928.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495928.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495928.1	GO:0016020	membrane	Cellular Component
+XP_004495570.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495570.1	GO:0005515	protein binding	Molecular Function
+XP_004495570.1	GO:0005634	nucleus	Cellular Component
+XP_004495570.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495570.1	GO:0007165	signal transduction	Biological Process
+XP_004495570.1	GO:0016020	membrane	Cellular Component
+XP_004495570.1	GO:0016301	kinase activity	Molecular Function
+XP_004495570.1	GO:0036211	protein modification process	Biological Process
+XP_004495663.1	GO:0003723	RNA binding	Molecular Function
+XP_004495663.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495663.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495755.1	GO:0016020	membrane	Cellular Component
+XP_004495481.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495481.1	GO:0006810	transport	Biological Process
+XP_004495481.1	GO:0016020	membrane	Cellular Component
+XP_004495481.1	GO:0016043	cellular component organization	Biological Process
+XP_012569986.1	GO:0003677	DNA binding	Molecular Function
+XP_012569986.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_012569986.1	GO:0005515	protein binding	Molecular Function
+XP_012569986.1	GO:0005634	nucleus	Cellular Component
+XP_012569986.1	GO:0016020	membrane	Cellular Component
+XP_004495571.1	GO:0005515	protein binding	Molecular Function
+XP_004495571.1	GO:0005575	cellular_component	Cellular Component
+XP_004495571.1	GO:0009987	cellular process	Biological Process
+XP_004495571.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495571.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_004495571.1	GO:0036211	protein modification process	Biological Process
+XP_004495666.1	GO:0005515	protein binding	Molecular Function
+XP_004495666.1	GO:0005773	vacuole	Cellular Component
+XP_004495666.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495666.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495666.1	GO:0006950	response to stress	Biological Process
+XP_004495666.1	GO:0009056	catabolic process	Biological Process
+XP_004495666.1	GO:0009987	cellular process	Biological Process
+XP_004495666.1	GO:0019538	protein metabolic process	Biological Process
+XP_004495666.1	GO:0042221	response to chemical	Biological Process
+XP_027189088.1	GO:0005215	transporter activity	Molecular Function
+XP_027189088.1	GO:0006810	transport	Biological Process
+XP_027189088.1	GO:0009987	cellular process	Biological Process
+XP_027189174.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_027189174.1	GO:0009056	catabolic process	Biological Process
+XP_027189174.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495573.1	GO:0005515	protein binding	Molecular Function
+XP_027189076.1	GO:0005515	protein binding	Molecular Function
+XP_027189076.1	GO:0005737	cytoplasm	Cellular Component
+XP_027189076.1	GO:0006950	response to stress	Biological Process
+XP_027189076.1	GO:0009056	catabolic process	Biological Process
+XP_027189076.1	GO:0009605	response to external stimulus	Biological Process
+XP_027189076.1	GO:0009987	cellular process	Biological Process
+XP_004495930.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495930.1	GO:0003774	cytoskeletal motor activity	Molecular Function
+XP_004495930.1	GO:0005515	protein binding	Molecular Function
+XP_004495930.1	GO:0009987	cellular process	Biological Process
+XP_027189142.1			
+XP_004496019.1	GO:0005634	nucleus	Cellular Component
+XP_004496019.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004496019.1	GO:0009058	biosynthetic process	Biological Process
+XP_004496019.1	GO:0016020	membrane	Cellular Component
+NP_001351738.1			
+XP_004495847.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495847.1	GO:0009987	cellular process	Biological Process
+XP_004495847.1	GO:0036211	protein modification process	Biological Process
+XP_004495574.1	GO:0003723	RNA binding	Molecular Function
+XP_004495932.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495932.1	GO:0005739	mitochondrion	Cellular Component
+XP_004495932.1	GO:0006091	generation of precursor metabolites and energy	Biological Process
+XP_004495932.1	GO:0016020	membrane	Cellular Component
+XP_004496020.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495668.1	GO:0000166	nucleotide binding	Molecular Function
+XP_004495668.1	GO:0005773	vacuole	Cellular Component
+XP_004495668.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495668.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495668.1	GO:0006810	transport	Biological Process
+XP_004495668.1	GO:0016043	cellular component organization	Biological Process
+XP_004495668.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495760.1	GO:0005515	protein binding	Molecular Function
+XP_004495760.1	GO:0005634	nucleus	Cellular Component
+XP_004495760.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495760.1	GO:0007165	signal transduction	Biological Process
+XP_004495760.1	GO:0008152	metabolic process	Biological Process
+XP_004495760.1	GO:0009719	response to endogenous stimulus	Biological Process
+XP_004495760.1	GO:0016020	membrane	Cellular Component
+XP_004495760.1	GO:0016301	kinase activity	Molecular Function
+XP_004495760.1	GO:0042221	response to chemical	Biological Process
+XP_004495848.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495848.1	GO:0009987	cellular process	Biological Process
+XP_004495848.1	GO:0016301	kinase activity	Molecular Function
+XP_004495485.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495485.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495575.1	GO:0005634	nucleus	Cellular Component
+XP_004495575.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495575.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495575.1	GO:0009416	response to light stimulus	Biological Process
+XP_004495575.1	GO:0016020	membrane	Cellular Component
+XP_004495933.1	GO:0003723	RNA binding	Molecular Function
+XP_004495933.1	GO:0005198	structural molecule activity	Molecular Function
+XP_004495933.1	GO:0005829	cytosol	Cellular Component
+XP_004495933.1	GO:0005840	ribosome	Cellular Component
+XP_004495933.1	GO:0006412	translation	Biological Process
+XP_004495669.1	GO:0008152	metabolic process	Biological Process
+XP_004495669.1	GO:0009987	cellular process	Biological Process
+XP_004495669.1	GO:0016301	kinase activity	Molecular Function
+XP_004495761.1			
+XP_004495850.1	GO:0005618	cell wall	Cellular Component
+XP_004495850.1	GO:0016043	cellular component organization	Biological Process
+XP_004495850.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495486.1	GO:0005773	vacuole	Cellular Component
+XP_004495486.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495486.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495486.1	GO:0008289	lipid binding	Molecular Function
+XP_004495577.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495577.1	GO:0005829	cytosol	Cellular Component
+XP_004495577.1	GO:0009056	catabolic process	Biological Process
+XP_004495577.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495577.1	GO:0009987	cellular process	Biological Process
+XP_004495934.1	GO:0003677	DNA binding	Molecular Function
+XP_004495934.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004495934.1	GO:0007165	signal transduction	Biological Process
+XP_004495934.1	GO:0009719	response to endogenous stimulus	Biological Process
+XP_004495934.1	GO:0042221	response to chemical	Biological Process
+XP_004495670.1	GO:0003723	RNA binding	Molecular Function
+XP_004495670.1	GO:0005515	protein binding	Molecular Function
+XP_004495670.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495762.1	GO:0005634	nucleus	Cellular Component
+XP_004495762.1	GO:0005737	cytoplasm	Cellular Component
+XP_004495762.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495762.1	GO:0007165	signal transduction	Biological Process
+XP_004495762.1	GO:0008289	lipid binding	Molecular Function
+XP_004495762.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495762.1	GO:0009719	response to endogenous stimulus	Biological Process
+XP_004495762.1	GO:0009908	flower development	Biological Process
+XP_004495762.1	GO:0016020	membrane	Cellular Component
+XP_004495762.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495762.1	GO:0042221	response to chemical	Biological Process
+XP_004495487.1	GO:0005215	transporter activity	Molecular Function
+XP_004495487.1	GO:0006810	transport	Biological Process
+XP_004495487.1	GO:0009987	cellular process	Biological Process
+XP_004495487.1	GO:0016020	membrane	Cellular Component
+XP_004495935.1	GO:0003677	DNA binding	Molecular Function
+XP_004495935.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004495935.1	GO:0007165	signal transduction	Biological Process
+XP_004495935.1	GO:0009719	response to endogenous stimulus	Biological Process
+XP_004495935.1	GO:0042221	response to chemical	Biological Process
+XP_004495851.1	GO:0009987	cellular process	Biological Process
+XP_004495578.1	GO:0003677	DNA binding	Molecular Function
+XP_004495578.1	GO:0005634	nucleus	Cellular Component
+XP_004495578.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495578.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495578.1	GO:0016020	membrane	Cellular Component
+XP_004495671.1			
+XP_004495763.1			
+XP_004495488.1			
+XP_004495936.2			
+XP_027189276.1	GO:0009507	chloroplast	Cellular Component
+XP_004495852.1	GO:0003824	catalytic activity	Molecular Function
+XP_004495852.1	GO:0005488	binding	Molecular Function
+XP_004495579.1	GO:0005515	protein binding	Molecular Function
+XP_004495579.1	GO:0005737	cytoplasm	Cellular Component
+XP_027189186.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189186.1	GO:0003676	nucleic acid binding	Molecular Function
+XP_027189186.1	GO:0005634	nucleus	Cellular Component
+XP_027189186.1	GO:0005737	cytoplasm	Cellular Component
+XP_027189186.1	GO:0006259	DNA metabolic process	Biological Process
+XP_027189186.1	GO:0006950	response to stress	Biological Process
+XP_027189186.1	GO:0009058	biosynthetic process	Biological Process
+XP_027189186.1	GO:0016020	membrane	Cellular Component
+XP_027189186.1	GO:0016043	cellular component organization	Biological Process
+XP_027189186.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004495764.1	GO:0005773	vacuole	Cellular Component
+XP_004495764.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495764.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495764.1	GO:0016043	cellular component organization	Biological Process
+XP_004495489.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495937.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495937.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012570011.1	GO:0005515	protein binding	Molecular Function
+XP_012570011.1	GO:0005654	nucleoplasm	Cellular Component
+XP_012570011.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_012570011.1	GO:0007049	cell cycle	Biological Process
+XP_012570011.1	GO:0009058	biosynthetic process	Biological Process
+XP_012570011.1	GO:0016020	membrane	Cellular Component
+XP_012570011.1	GO:0016301	kinase activity	Molecular Function
+XP_012570011.1	GO:0030234	enzyme regulator activity	Molecular Function
+XP_012570011.1	GO:0036211	protein modification process	Biological Process
+XP_012570011.1	GO:0065009	regulation of molecular function	Biological Process
+XP_027189034.1	GO:0000003	reproduction	Biological Process
+XP_027189034.1	GO:0007049	cell cycle	Biological Process
+XP_004495580.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495580.1	GO:0009987	cellular process	Biological Process
+XP_004495580.1	GO:0016740	transferase activity	Molecular Function
+XP_004495580.1	GO:0036211	protein modification process	Biological Process
+XP_004495673.1	GO:0003676	nucleic acid binding	Molecular Function
+XP_004495673.1	GO:0004518	nuclease activity	Molecular Function
+XP_004495673.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495765.1	GO:0005773	vacuole	Cellular Component
+XP_004495765.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495765.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495765.1	GO:0006810	transport	Biological Process
+XP_004495765.1	GO:0016043	cellular component organization	Biological Process
+XP_004495490.1	GO:0005634	nucleus	Cellular Component
+XP_004495490.1	GO:0016020	membrane	Cellular Component
+XP_004495938.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495938.1	GO:0009987	cellular process	Biological Process
+XP_004495938.1	GO:0016740	transferase activity	Molecular Function
+XP_004496024.2	GO:0003677	DNA binding	Molecular Function
+XP_004496024.2	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004496024.2	GO:0005515	protein binding	Molecular Function
+XP_004496024.2	GO:0005634	nucleus	Cellular Component
+XP_004496024.2	GO:0016020	membrane	Cellular Component
+XP_027189656.1	GO:0003824	catalytic activity	Molecular Function
+XP_027189656.1	GO:0009058	biosynthetic process	Biological Process
+XP_027189656.1	GO:0009987	cellular process	Biological Process
+XP_027189768.1	GO:0003677	DNA binding	Molecular Function
+XP_027189768.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004495674.1	GO:0005515	protein binding	Molecular Function
+XP_004495674.1	GO:0005634	nucleus	Cellular Component
+XP_004495674.1	GO:0006810	transport	Biological Process
+XP_004495674.1	GO:0009987	cellular process	Biological Process
+XP_004495674.1	GO:0016020	membrane	Cellular Component
+XP_004495766.1	GO:0005488	binding	Molecular Function
+XP_004495766.1	GO:0006629	lipid metabolic process	Biological Process
+XP_004495766.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495766.1	GO:0009987	cellular process	Biological Process
+XP_004495939.1	GO:0005975	carbohydrate metabolic process	Biological Process
+XP_004495939.1	GO:0016787	hydrolase activity	Molecular Function
+XP_004496025.1	GO:0003677	DNA binding	Molecular Function
+XP_004496025.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_004495855.1	GO:0005515	protein binding	Molecular Function
+XP_004495855.1	GO:0005634	nucleus	Cellular Component
+XP_004495855.1	GO:0006139	nucleobase-containing compound metabolic process	Biological Process
+XP_004495855.1	GO:0009058	biosynthetic process	Biological Process
+XP_027189717.1			
+XP_004495767.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495767.1	GO:0007165	signal transduction	Biological Process
+XP_004495767.1	GO:0038023	signaling receptor activity	Molecular Function
+XP_004495940.1			
+XP_004496026.2	GO:0005515	protein binding	Molecular Function
+XP_004496026.2	GO:0016043	cellular component organization	Biological Process
+XP_004496026.2	GO:0016787	hydrolase activity	Molecular Function
+XP_004496026.2	GO:0030234	enzyme regulator activity	Molecular Function
+XP_012569889.1	GO:0005515	protein binding	Molecular Function
+XP_012569889.1	GO:0005634	nucleus	Cellular Component
+XP_012569889.1	GO:0009987	cellular process	Biological Process
+XP_012569889.1	GO:0016740	transferase activity	Molecular Function
+XP_012569889.1	GO:0036211	protein modification process	Biological Process
+XP_004495677.1	GO:0005515	protein binding	Molecular Function
+XP_004495677.1	GO:0005773	vacuole	Cellular Component
+XP_004495677.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495677.1	GO:0006810	transport	Biological Process
+XP_004495677.1	GO:0016043	cellular component organization	Biological Process
+XP_004495856.1	GO:0005773	vacuole	Cellular Component
+XP_004495856.1	GO:0005783	endoplasmic reticulum	Cellular Component
+XP_004495856.1	GO:0005794	Golgi apparatus	Cellular Component
+XP_004495856.1	GO:0005886	plasma membrane	Cellular Component
+XP_004495856.1	GO:0006810	transport	Biological Process
+XP_004495856.1	GO:0009058	biosynthetic process	Biological Process
+XP_004495856.1	GO:0009987	cellular process	Biological Process
+XP_004495856.1	GO:0016740	transferase activity	Molecular Function
+XP_004495856.1	GO:0036211	protein modification process	Biological Process
+XP_004495941.1			
+XP_004496027.1	GO:0005886	plasma membrane	Cellular Component
+XP_004496027.1	GO:0006629	lipid metabolic process	Biological Process
+XP_004496027.1	GO:0009056	catabolic process	Biological Process
+XP_004496027.1	GO:0009987	cellular process	Biological Process
+XP_004496027.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012569944.1	GO:0000166	nucleotide binding	Molecular Function
+XP_012569944.1	GO:0005215	transporter activity	Molecular Function
+XP_012569944.1	GO:0006810	transport	Biological Process
+XP_012569944.1	GO:0009987	cellular process	Biological Process
+XP_012569944.1	GO:0016020	membrane	Cellular Component
+XP_012569944.1	GO:0016787	hydrolase activity	Molecular Function
+XP_012569853.1			
+XP_012569855.1	GO:0016020	membrane	Cellular Component
+XP_012569874.1			
+XP_012569890.1			
+XP_012569903.1	GO:0003677	DNA binding	Molecular Function
+XP_012569903.1	GO:0003700	DNA-binding transcription factor activity	Molecular Function
+XP_012569908.2	GO:0005488	binding	Molecular Function
+XP_012569909.1			
+XP_012569910.2			
+XP_012569924.1	GO:0016020	membrane	Cellular Component
+XP_027188971.1			
+XP_027189319.1	GO:0000166	nucleotide binding	Molecular Function
+XP_027189319.1	GO:0009987	cellular process	Biological Process
+XP_027189319.1	GO:0016301	kinase activity	Molecular Function
+XP_027189319.1	GO:0036211	protein modification process	Biological Process
+XP_027189907.1			
+XP_027189953.1	GO:0048856	anatomical structure development	Biological Process
+XP_027189993.1	GO:0003676	nucleic acid binding	Molecular Function
+XP_027189993.1	GO:0004518	nuclease activity	Molecular Function
+XP_027189993.1	GO:0005634	nucleus	Cellular Component
+XP_027189993.1	GO:0005737	cytoplasm	Cellular Component
+XP_027189993.1	GO:0016020	membrane	Cellular Component

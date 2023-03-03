@@ -1,7 +1,7 @@
 ## Read the ontologies 'bp' , 'mf', 'cc' and update it with new GO slims
 
 # Load slim class object
-load("data/slim.rda")
+load("dat/slim.rda")
 
 
 # New GO slims to add into 'bp' , 'mf', 'cc' 
@@ -25,13 +25,12 @@ bp <- bp %>%
              slim_class = c("protein metabolism", "response to abiotic or biotic stimulus", 
                             "response to abiotic or biotic stimulus")))
 
-
-
 mf <- mf %>% 
   bind_rows(c(GO_type = "MF", 
               slim_GO_ID = "GO:0140110", 
               slim_GO_Name = "transcription regulator activity", 
               slim_class = "other enzyme activity "))
+
 
 # Save updated slim classification object
 save(bp, mf, cc, file = "slim.rda")
