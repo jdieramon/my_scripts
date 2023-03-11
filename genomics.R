@@ -266,6 +266,115 @@ blast_homologs <- function(hitFile, ident, cover) {
 ## blast_homologs("B1J2TDTZ01R-Alignment-HitTable.csv", ident = 55, cover = 85)
 
 
+# BLAST Align two or more sequences -------------------------------------------------                                                             
+# Sequence mRNA : 5UTR+CDS+3UTR (it may be important to identify the longer sequence). 
+blast_homologs_mRNA <- function(hitFile, ident, cover){
+  
+  ### ''' Take a csv table with Blast hits "Align two or more sequences"
+  ### return subset filtered by %Identity & %Coverage (longer sequence)
+  # Ex. Duplication Analysis
+  # mRNA = 5UTR+CDS+3UTR
+  
+  # read downloaded Hit file
+  hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
+  
+  # change colnames
+  # en blast-2 sequences contra ellas mismas no hay 13 columnas sino 12 (-"%positives")
+  colnames(hit) = c("query", "subject", "identity", "align_length", "mismatches",
+                    "gap_opens", "q.start", "q.end", "s.start", "s.end", "evalue",
+                    "bit_score")
+  
+  # make a table_length for queries & subjects 
+  tlengths <- hit %>% 
+    filter(query == subject) %>% 
+    select(query, align_length) %>% 
+    arrange(query, desc(align_length)) %>% 
+    distinct(query, .keep_all = TRUE) %>% 
+    rename(length = align_length)
+  
+  
+  # combine hit_table with queries & subjects lengths 
+  # estimate coverage (longer sequence)
+  as_tibble(hit) %>% 
+    select(-c(align_length, bit_score, mismatches, gap_opens)) %>% 
+    filter(query != subject) %>% 
+    right_join(tlengths, by = "query") %>% 
+    rename(len.query = length) %>% 
+    right_join(tlengths %>% rename(subject = query), by = "subject") %>% 
+    rename(len.sub = length) %>% 
+    mutate(cov.query = (q.end - q.start + 1)/len.query, 
+           cov.sub = (s.end - s.start + 1)/len.sub) %>% 
+    mutate(cov_long = case_when(len.query > len.sub ~ cov.query*100, 
+                                len.query < len.sub ~ cov.sub*100, 
+                                TRUE ~ cov.query*100)) %>% 
+    select(-c(q.start, q.end, s.start, s.end, len.query, len.sub, cov.query, cov.sub)) %>% 
+    filter(identity >= ident, cov_long >= cover) %>% 
+    select(query, subject, identity, cov_long, evalue) %>% 
+    arrange(identity)
+  
+}
+
+## Usage
+#hitFile = "dat/0SR2C6E2114-Alignment-HitTable.csv"
+#blast_homologs_mRNA(hitFile, ident = 60, cover = 50)    
+
+# Sequence CDS (it may be important to identify the longer sequence). 
+extract_CDS <- function(xm) {
+  # ''' extract the CDS (start/end) coordinates
+
+efetch = rentrez::entrez_fetch(db= 'nuccore', id = xm, rettype = 'gp')
+  listName = strsplit(efetch, "\n")
+  for(i in seq(listName[[1]])) {
+    val <- listName[[1]][i]
+    #remove whitespaces from the string
+    val = gsub(" ", "", val)
+    
+    # check for feature
+    if(substr(val, 1, 3) == "CDS") {
+      #remove characters "CDS" from the string
+      val = gsub("CDS", "", val)
+      #remove special symbols "..." from the string
+      val = strsplit(val, "[..]")
+      #elements 1-3 of the list contain the start/stop coordinates
+      start = as.numeric(val[[1]][1])
+      stop = as.numeric(val[[1]][3])
+      cds = list(startCDS = start, stopCDS = stop)
+      
+      # return for downstream analysis
+      return(cds)
+    }
+    }
+  }
+
+getCDS <- function(xmsIds) {
+  # ''' return DNAstringobject with the CDS sequence
+  mycds = c()
+  mycds = sapply(xmsIds, function(i){
+    
+    coord = extract_CDS(i)
+    cds = rentrez::entrez_fetch(db="nucleotide", id=i, rettype="fasta",
+                                seq_start = coord$startCDS, seq_stop = coord$stopCDS)
+    cds_tidy = strsplit(cds, "\n")
+    
+    cds_tidy <- as.character(paste0(cds_tidy[[1]][2:length(cds_tidy[[1]])], collapse = ""))
+    mycds = c(mycds, cds_tidy)
+  })
+  
+  # Result 
+  DNAStringSet(mycds)
+  
+}
+                                                             
+##Usage
+# FIRST : Write sequences to a fasta file
+#writeXStringSet(getCDS(xmsIds), filepath="dat/CDS4dup.fasta", format="fasta")  
+
+# SECOND : Load your fasta file 'Align two or more sequences' into BLAST and download the "Hit table(csv)" 
+#hitFile = "dat/0SW43G15114-Alignment-HitTable.csv"
+
+# THIRD : Analyze BLAST output
+#blast_homologs_CDS(hitFile, ident = 60, cover = 50) 
+
 
 
 ##--------------------------------------------------------------------------------------------
