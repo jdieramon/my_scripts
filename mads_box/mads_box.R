@@ -160,17 +160,17 @@ tdat %>%
 
 # Get info on isoforms : n. loci with > 1 protein
 tdat %>% 
-  arrange(LOC, AA) %>% 
+  arrange(LOC, desc(AA)) %>% 
   count(LOC, sort = T) %>% 
   filter(n > 1)
 
 nisof <- tdat %>% 
-  arrange(LOC, AA) %>% 
+  arrange(LOC, desc(AA)) %>% 
   count(LOC) %>% 
   pull(n)
 
 tdat <- tdat %>%  
-  arrange(LOC, AA) %>% 
+  arrange(LOC, desc(AA)) %>% 
   distinct(LOC, .keep_all = TRUE) %>% 
   mutate(n_isof = nisof)
 
