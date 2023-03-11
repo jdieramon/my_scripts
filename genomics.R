@@ -214,7 +214,7 @@ get_xp_length <- function(xp_id){
 }
 
 
-blast_homologs <- function(hitFile, ident, cover) {
+blast_homologs_aa <- function(hitFile, ident, cover) {
   
   ### ''' Take a csv table with Blast hits and return a 
   ### subset filteres by %Identity & %Coverage (longer sequence)
@@ -263,17 +263,17 @@ blast_homologs <- function(hitFile, ident, cover) {
 }
 
 ## Usage
-## blast_homologs("B1J2TDTZ01R-Alignment-HitTable.csv", ident = 55, cover = 85)
+## blast_homologs_aa("B1J2TDTZ01R-Alignment-HitTable.csv", ident = 55, cover = 85)
 
 
 # BLAST Align two or more sequences -------------------------------------------------                                                             
 # Sequence mRNA : 5UTR+CDS+3UTR (it may be important to identify the longer sequence). 
-blast_homologs_mRNA <- function(hitFile, ident, cover){
+blast_homologs_nt <- function(hitFile, ident, cover){
   
   ### ''' Take a csv table with Blast hits "Align two or more sequences"
   ### return subset filtered by %Identity & %Coverage (longer sequence)
   # Ex. Duplication Analysis
-  # mRNA = 5UTR+CDS+3UTR
+  
   
   # read downloaded Hit file
   hit = read.csv(hitFile, header = FALSE, stringsAsFactors = FALSE)
@@ -316,7 +316,7 @@ blast_homologs_mRNA <- function(hitFile, ident, cover){
 
 ## Usage
 #hitFile = "dat/0SR2C6E2114-Alignment-HitTable.csv"
-#blast_homologs_mRNA(hitFile, ident = 60, cover = 50)    
+#blast_homologs_nt(hitFile, ident = 60, cover = 50)    
 
 # Sequence CDS (it may be important to identify the longer sequence). 
 extract_CDS <- function(xm) {
@@ -373,7 +373,7 @@ getCDS <- function(xmsIds) {
 #hitFile = "dat/0SW43G15114-Alignment-HitTable.csv"
 
 # THIRD : Analyze BLAST output
-#blast_homologs_CDS(hitFile, ident = 60, cover = 50) 
+#blast_homologs_nt(hitFile, ident = 60, cover = 50) 
 
 
 
