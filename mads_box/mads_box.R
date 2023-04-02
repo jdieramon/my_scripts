@@ -217,31 +217,43 @@ gr <- tdat %>%
             Coordstart = ifelse(Strand == "-", chr_e, chr_s),
             Coordend = ifelse(Strand == "+", chr_e, chr_s))
 
+
+# Add new column : seq.length ('bp_cut' = 150) to map the TSS coordinate (promoter analysis) 
+# it requires to customize the bp_length when the ATG is in the end of the exon
+gr <- gr %>% 
+  dplyr::mutate(bp_cut = 150) %>% 
+  dplyr::mutate(bp_cut = ifelse(LOC == "LOC101493118", 14, bp_cut), 
+                bp_cut = ifelse(LOC == "LOC101504656", 27, bp_cut), 
+                bp_cut = ifelse(LOC == "LOC101509413", 3,  bp_cut), 
+                bp_cut = ifelse(LOC == "LOC101510075", 39, bp_cut))
+
 gr <- makeGRangesFromDataFrame(gr, start.field = "Coordstart", 
                                end.field = "Coordend", 
                                strand.field = "Strand", ignore.strand = F, 
                                seqnames.field = "Chr", 
                                keep.extra.columns = TRUE)
 
-# order the GR object by chr and then by region location
-# tgr[order(tgr), ]
-
 # Add genome
 genome(gr) = "ASM33114v1"
 
+# filter out 'unplaced' seqs (9 seqs! ; filter out??)
+gr <- gr[seqnames(gr) != "Un"]
 
-# Save object 
-save(seqs, gr, file = "res/sequences.rda")
-
-# Add seqlengths ???? (para tamano de chrs ver script despacho 'ranges').   
+# add seqlengths 
 seqinfo(gr)
 # NCBI, Frontier : https://www.ncbi.nlm.nih.gov/genome/?term=chickpea 
 # size = c(48.36, 36.63, 39.99, 49.19, 48.17, 59.46, 48.96, 16.48)
 genome(gr)
 isCircular(gr)
-seqlengths(gr) = c(NA, 48.36, 39.99, 49.19)
-gr
+#seqlengths(gr) = c(NA, 48.36, 39.99, 49.19)
 
+# order the GR object by chr and then by region location
+sort(table(seqnames(gr)), decreasing = TRUE)
+# gr[order(gr), ]
+gr <- sort(gr)
+
+# Save object 
+save(seqs, gr, file = "res/sequences.rda")
 
 
 ## Puedo a??adir metadatos GENEID to match gene information across different Genbank databases) 
@@ -304,20 +316,20 @@ mads_cds
 library(BSgenome.Carietinum.NCBI.v1)
 ## {BSgenome.Carietinum.NCBI.v1} Cicer arietinum full genome (ver. NCBI)
 genome = BSgenome.Carietinum.NCBI.v1
-genome$Ca1 #this loads Chr1 into computer memory
-ca1 = genome[[1]]  #loads Chr1 into computer memory
+#genome$Ca1 #this loads Chr1 into computer memory
+#ca1 = genome[[1]]  #loads Chr1 into computer memory
 
 
 # Parse `TSScoordinates` on Chrs presented in the GR object
 # [esto es mas eficiente que hacer loops sobre el BSGenome]
 levels(seqnames(gr))
 
-gr.tss = GRangesList(TSScoordinates(gr, mads_cds, bp = 150, "Ca1"),
-                     TSScoordinates(gr, mads_cds, bp = 150, "Ca3"), 
-                     TSScoordinates(gr, mads_cds, bp = 150, "Ca4"))
+# gr.tss = GRangesList(TSScoordinates(gr, mads_cds, "Ca1"),
+#                      TSScoordinates(gr, mads_cds, "Ca3"), 
+#                      TSScoordinates(gr, mads_cds, "Ca4"))
+# 
 
-
-sort(gr)
+gr.tss= GRangesList(sapply(paste0("Ca", 1:8), function(i) TSScoordinates(gr, mads_cds, i)))
 gr.tss = unlist(gr.tss)
 
 # Save object 
@@ -331,18 +343,24 @@ gr.promoters = promoters(gr.tss, upstream=1500, downstream=9)
 # Con las coordenadas del promotor puedo extraer la seq del promotor 
 # Hago TSScoordinates con los Chr que tenga en el GR
 # esto es mas eficiente que hacer loops sobre el BSGenome 
-prom = DNAStringSet(c(get_promoters(gr = gr.promoters, chr = "Ca1"),
-                      get_promoters(gr = gr.promoters, chr = "Ca3"), 
-                      get_promoters(gr = gr.promoters, chr = "Ca4")))
+# prom = DNAStringSet(c(get_promoters(gr = gr.promoters, chr = "Ca1"),
+#                       get_promoters(gr = gr.promoters, chr = "Ca3"), 
+#                       get_promoters(gr = gr.promoters, chr = "Ca4")))
+# 
+
+prom = sapply(paste0("Ca", 1:8), function(i) {
+  get_promoters(gr = gr.promoters, chr = i)})
+
+prom = DNAStringSet(unlist(prom))
+
+names(prom) =  gr.promoters$LOC #ojo, debo haberlos corrido 'get_promoter' por orden de Chr
+names(prom) = paste0(names(prom), "_promoter")
 
 #check ATG
 subseq(prom, start = 1501, end = 1509)
 
 
 # Write sequences to a fasta file
-names(prom) =  gr.promoters$LOC #ojo, debo haberlos corrido 'get_promoter' por orden de Chr
-names(prom) = paste0(names(prom), "_promoter")
-
 writeXStringSet(prom, filepath="res/promoters.fasta", format="fasta")  
 
 
@@ -352,6 +370,7 @@ writeXStringSet(prom, filepath="res/promoters.fasta", format="fasta")
 length(fasta.seqlengths("res/promoters.fasta"))
 names(fasta.seqlengths("res/promoters.fasta"))
 fasta.seqlengths("res/promoters.fasta")
+
 
 # Read StringSet
 promoters <- readDNAStringSet("res/promoters.fasta")

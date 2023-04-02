@@ -159,40 +159,48 @@ characterizeTable <- function(targets) {
 
 
 
-TSScoordinates <- function(gr, CDSstringset, bp = 150, chr) {
+TSScoordinates <- function(gr, CDSstringset, chr) {
   
   CDSstringset = unique(CDSstringset)
   gr.tss = gr[seqnames(gr) == chr]
-  bp_cut = bp
   
-  for(i in seq_along(gr.tss)) { 
-    
+  for(i in seq_along(gr.tss)) {  
     text = genome[[which(names(genome) == chr)]]
-    pattern = CDSstringset[which(names(CDSstringset) == gr.tss$LOC[i])][[1]][1:bp_cut]
+    locid = gr.tss$LOC[i]
+    
+    locid = ifelse(locid=="LOC101488241", "CAAP1", locid) #customize for this study
+    pattern = CDSstringset[which(names(CDSstringset) == locid)][[1]][1:gr.tss$bp_cut[i]]
     
     if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "+"]) {
       
-      start(gr.tss[i]) = start(matchPattern(pattern, text, max.mismatch = 0))
+      s = start(matchPattern(pattern, text, max.mismatch = 0))
+      if(gr.tss$LOC[i] == "LOC101493118") {s = s[1]} #customize for this study
+      start(gr.tss[i]) = s
       
     }
     
-    if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "-"]) {#do not use 'else' bc some gene might be unmapped (strand = *)
+    if(gr.tss[i] %in% gr.tss[strand(gr.tss) == "-"]) {#do not use 'else' bc some genes might be unmapped (strand = *)
       
       pattern = reverseComplement(pattern)
-      end(gr.tss[i]) = end(matchPattern(pattern, text, max.mismatch = 0))
+      e = end(matchPattern(pattern, text, max.mismatch = 0))
+      if(gr.tss$LOC[i] == "LOC101509413") {e = e[655749]} #customize for this study
+      end(gr.tss[i]) = e
+      
     }
     
   }
+  
   
   gr.tss  
   
   
 }
 
+
 ## Usage
-## gr.tss = GRangesList(TSScoordinates(gr, mads_cds, bp = 150, "Ca1"),
-##                      TSScoordinates(gr, mads_cds, bp = 150, "Ca3"), 
-##                      TSScoordinates(gr, mads_cds, bp = 150, "Ca4"))
+## gr.tss = GRangesList(TSScoordinates(gr, mads_cds, "Ca1"),
+##                      TSScoordinates(gr, mads_cds, "Ca3"), 
+##                      TSScoordinates(gr, mads_cds, "Ca4"))
 
 
 
