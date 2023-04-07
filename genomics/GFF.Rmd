@@ -1,0 +1,82 @@
+---
+title: "GFF"
+author: "Jose V. Die"
+date: "4/7/2023"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## GFF
+
+The General Feature Format ([GFF](https://www.ensembl.org/info/website/upload/gff.html)) file has nine columns:  
+  
+  
+| colname | description |
+|---|---|
+| seqname | The name of the sequence; must be a chromosome or scaffold. |
+| source | The program that generated this feature. |
+| feature | The name of this type of feature, e.g. "CDS", "start_codon", "stop_codon", and "exon" |
+| start | The starting position of the feature in the sequence; the first base is numbered 1. |
+| end | The ending position of the feature (inclusive). |
+| score | A score between 0 and 1000. |
+| strand | Valid entries include "+", "-", or ".". |
+| frame | If the feature is a coding exon, frame should be a number between 0-2 that represents the reading frame of the first base. If the feature is not a coding exon, the value should be ".". |
+  
+Dependencies
+```{r dependencies, message=FALSE}
+library(rtracklayer)
+
+```
+
+### Load GFF file 
+```{r}
+gff_file <- "../dat/Saccharomyces_cerevisiae_genome.gff3"
+
+```
+Available molecular features in the GFF file 
+
+```{r}
+gff_all = import.gff(con = gff_file ,
+                      colnames = c("type", "mycolums"))
+table(gff_all$type)
+```
+
+Load gene models from the GFF file. 
+```{r}
+gff_chromosome = import.gff(con = gff_file ,
+                     feature.type = "chromosome",
+                     colnames = c("type", "mycolums"))
+
+gff_gene = import.gff(con = gff_file ,
+                     feature.type = "gene",
+                     colnames = c("type", "mycolums"))
+
+gff_exon = import.gff(con = gff_file ,
+                     feature.type = "exon",
+                     colnames = c("type", "mycolums"))
+```
+
+Look the data
+```{r}
+gff_chromosome
+
+gff_gene
+
+gff_exon
+
+```
+
+Genes on chr 'I' and strand 'forward'
+```{r}
+gff_gene[seqnames(gff_gene) == "I" & strand(gff_gene) == "+"]
+```
+
+
+https://web.mit.edu/~r/current/arch/i386_linux26/lib/R/library/GenomicRanges/doc/GenomicRangesHOWTOs.pdf
+
+
