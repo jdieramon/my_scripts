@@ -28,19 +28,198 @@ The General Feature Format ([GFF](https://www.ensembl.org/info/website/upload/gf
 Dependencies
 
 ```r
+library(dplyr)
+library(tibble)
+library(ggplot2)
+library(stringr)
 library(rtracklayer)
+library(Gviz)
 ```
-
-### Load GFF file 
+Point to the GFF file 
 
 ```r
 gff_file <- "../dat/Saccharomyces_cerevisiae_genome.gff3"
 ```
-Available molecular features in the GFF file 
+
+
+Read GFF file as dataframe
+
+```r
+gff = read.delim(gff_file, header=F, comment.char="#", 
+                 col.names = c("seqname", "source", "feature", "start", "end", 
+                               "score", "strand", "frame", "group"))
+gff <- gff  %>% as_tibble()
+```
+
+### Summarize features in GTF file
+
+```r
+gff %>% 
+  count(feature, sort = TRUE)
+```
+
+```
+## # A tibble: 16 x 2
+##    feature                       n
+##    <chr>                     <int>
+##  1 exon                       7507
+##  2 CDS                        6913
+##  3 gene                       6600
+##  4 mRNA                       6600
+##  5 ncRNA_gene                  424
+##  6 tRNA                        299
+##  7 transposable_element         91
+##  8 transposable_element_gene    91
+##  9 snoRNA                       77
+## 10 rRNA                         24
+## 11 ncRNA                        18
+## 12 chromosome                   17
+## 13 pseudogene                   12
+## 14 pseudogenic_transcript       12
+## 15 snRNA                         6
+## 16 five_prime_UTR                4
+```
+
+```r
+gff %>% 
+  group_by(seqname, feature) %>% 
+  summarize(count = n()) %>%
+  ungroup() %>% 
+  filter(feature != "chromosome") %>% 
+  ggplot(aes(x = seqname, y = log2(count))) +
+  geom_bar(aes(fill = feature), stat = 'identity', position = 'dodge')
+```
+
+![](GFF_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
+### Number of genes on each sequence
 
 
 ```r
-gff_all = import.gff(con = gff_file ,
+gff %>% 
+  group_by(seqname) %>% 
+  filter(feature == "gene") %>% 
+  count(feature)
+```
+
+```
+## # A tibble: 17 x 3
+## # Groups:   seqname [17]
+##    seqname feature     n
+##    <chr>   <chr>   <int>
+##  1 I       gene      117
+##  2 II      gene      456
+##  3 III     gene      184
+##  4 IV      gene      836
+##  5 IX      gene      241
+##  6 Mito    gene       28
+##  7 V       gene      323
+##  8 VI      gene      139
+##  9 VII     gene      583
+## 10 VIII    gene      321
+## 11 X       gene      398
+## 12 XI      gene      348
+## 13 XII     gene      578
+## 14 XIII    gene      505
+## 15 XIV     gene      435
+## 16 XV      gene      597
+## 17 XVI     gene      511
+```
+
+
+### Genes in a specific genomic region 
+
+
+```r
+gff %>% 
+  filter(seqname == "I", feature == "gene", 
+               start > 57300, end < 58000)
+```
+
+```
+## # A tibble: 2 x 9
+##   seqname source feature start   end score strand frame group                   
+##   <chr>   <chr>  <chr>   <int> <int> <chr> <chr>  <chr> <chr>                   
+## 1 I       sgd    gene    57488 57796 .     -      .     ID=gene:YAL045C;biotype…
+## 2 I       sgd    gene    57518 57850 .     +      .     ID=gene:YAL044W-A;Name=…
+```
+
+### Distribution of gene lengths
+
+```r
+feat_len <- gff %>% 
+  transmute(seqname, feature, strand, len = end - start) %>% 
+  filter(feature == "gene") %>% 
+  pull(len)
+
+plot(density(feat_len), main = 'Distribution of gene lengths on the genome')
+```
+
+![](GFF_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
+Distribution per chromosome
+
+```r
+Ilen <- gff %>% 
+  transmute(seqname, feature, strand, len = end - start) %>% 
+  filter(seqname == "I", feature == "gene" ) %>% 
+  pull(len)
+
+plot(density(Ilen), main = 'Distribution of gene lengths \n over chromosomes', 
+     ylim = c(0, 6.5e-04 ))
+
+
+lenchrs = sapply(1:16, function(i){
+  chr = as.roman(i)
+  gff %>% 
+    transmute(seqname, feature, strand, len = end - start) %>% 
+    filter(feature == "gene", seqname == as.character(chr)) %>% 
+    pull(len)
+  
+})
+
+for(i in seq(lenchrs)) {
+  lines(density(lenchrs[[i]]), col = i)
+}
+```
+
+![](GFF_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+
+
+## Plotting genomic intervals
+
+```r
+# Extract gene_id in tidy format from 'group' 
+
+gff_gr <- gff %>% 
+  filter(feature == "gene") %>% 
+  mutate(feat_id = str_sub(group, str_locate(group, ":")[,1]+1, str_locate(group, ";")[,1]-1))
+
+gff_gr <- with(gff_gr, GRanges(seqname, IRanges(start, end), strand, id = feat_id))
+
+genomic_ds <- gff_gr[seqnames(gff_gr) == "I"] # select chromosome
+
+ref <- GRanges()
+#library(Gviz)
+ref_track <- GenomeAxisTrack()
+options(ucscChromosomeNames=FALSE)
+data_track <- AnnotationTrack(genomic_ds, name = "Genes", showFeatureId = TRUE)
+plotTracks(c(ref_track, data_track),
+           from = 57000, to = 58000)  # select coordinates
+```
+
+![](GFF_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+
+
+-------------------------------------------------------------------------------
+
+
+
+### Summarize features in GTF file
+
+
+```r
+gff_all = import.gff(con =  gff_file ,
                       colnames = c("type", "mycolums"))
 table(gff_all$type)
 ```
@@ -172,4 +351,19 @@ gff_gene[seqnames(gff_gene) == "I" & strand(gff_gene) == "+"]
 ##   -------
 ##   seqinfo: 17 sequences from an unspecified genome; no seqlengths
 ```
+
+
+dataframe?
+
+```r
+df = as.data.frame(gff_gene[seqnames(gff_gene) == "I" & strand(gff_gene) == "+"])
+plot(density(df$width), main = "Distribution of gene lengths on Chr. I")
+```
+
+![](GFF_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+
+
+
+https://web.mit.edu/~r/current/arch/i386_linux26/lib/R/library/GenomicRanges/doc/GenomicRangesHOWTOs.pdf
+
 
