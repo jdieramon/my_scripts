@@ -59,11 +59,29 @@ nils_bp %>%
 
 
 # match to genome annotation
-nils_bp %>% 
+nils_ds <- nils_bp %>% 
   filter(Slim_GO_Name == "response to light stimulus") %>% 
   bind_rows(nils_bp %>% filter(Slim_GO_Name == "reproduction")) %>% 
   bind_rows(nils_bp %>% filter(Slim_GO_Name == "circadian rhythm"))
   
+xms = nils_ds %>% pull(Input_Accession) %>% unique()
 
 
+getXMdescription <- function(xm) {
+  transcript_elink = rentrez::entrez_link(dbfrom = "nuccore", 
+                                          id = xm, 
+                                          db= "gene")
+  gene_id = transcript_elink$links$nuccore_gene
+  gene = rentrez::entrez_summary(db = "gene", id = gene_id)
+  gene$description
+  
+}
+
+
+desc = sapply(xms, function(i) getXMdescription(i), USE.NAMES = F)
+
+ds <- data_frame(Input_Accession = xms, desc = desc) %>% tibble()
+
+nils_ds %>% inner_join(ds, by = "Input_Accession") %>% 
+  transmute(Input_Accession, desc, Slim_GO_Name, GO_Name = Input_GO_Name)
 
