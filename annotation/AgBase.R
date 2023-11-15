@@ -3,7 +3,7 @@
 
 
 # Load Ag file
-nils <- read.delim("data/AgBase.txt")
+nils <- read.delim("dat/AgBase.txt")
 
 as_tibble(nils)
 
