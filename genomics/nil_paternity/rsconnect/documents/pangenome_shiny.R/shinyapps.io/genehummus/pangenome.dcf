@@ -1,0 +1,12 @@
+name: pangenome
+title: pangenome
+username: genehummus
+account: genehummus
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11352287
+bundleId: 8307033
+url: https://genehummus.shinyapps.io/pangenome/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

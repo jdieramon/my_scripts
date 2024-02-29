@@ -1,0 +1,12 @@
+name: pangenome
+title: pangenome
+username: josev_die
+account: josev_die
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 13784
+bundleId: 94051
+url: https://bookdown.org/josev_die/pangenome/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
