@@ -16,6 +16,12 @@ get_passport <- function(id) {
     id = str_replace(id, " ", "")
   }
   
+  if (id %in% c("CDC 512 51", "DCP 92 3")) { 
+    id = str_replace_all(id, " ", "-")
+    id = str_replace(id, "-", " ")
+  }
+  
+  
   if (id %in% passport$Genotype) {
     print(passport[which(str_detect(passport$Genotype, id)), ])
   } else if (id %in% passport$Alternate.name) {
@@ -75,7 +81,9 @@ server <- function(input, output) {
   
   output$intro <- renderUI({
     HTML("Enter your genotype using the following syntax : prefix_empty space_number.<br>
-          For example, if you need 'JG62', type `JG 62`; if 'ICC7560', type 'ICC 7560'.")
+          For example, if you need 'JG62', type `JG 62`; if 'ICC7560', type 'ICC 7560'.<br>
+          If the id has more than two elements, separate them with spaces. <br>
+          F. ex., DC 512 51, DCP 92 3, or Phule G 12")
   })
   
   observeEvent(input$submit, {
