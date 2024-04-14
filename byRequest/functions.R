@@ -44,3 +44,36 @@ get_taxonomy <- function(taxids){
   
   
 }
+
+
+get_taxonomy_lineage <- function(taxids){ 
+  # Take a vector with protein ids (uniprot)
+  # Return a tibble with taxonomic data
+  
+  # make an empty dataframe (outcome)
+  outcome <- data.frame()
+  
+  # loop over the taxids
+  for(id in taxids) {
+    result = entrez_fetch(db = "taxonomy", id = id,
+                          rettype="xml", parsed=TRUE)  
+  
+  # make an empty df (tmp)
+  mydf = tibble()
+  
+  # extract the root node from the xml file
+  rootnode = xmlRoot(result)  
+  
+  mydf = cbind(setNames(xmlToDataFrame(getNodeSet(result, "//Rank")), "Rank"),
+               setNames(xmlToDataFrame(getNodeSet(result, "//ScientificName")), "species"), 
+               setNames(xmlToDataFrame(getNodeSet(result, "//Lineage")), "lineage"))
+  
+  
+  outcome = rbind(outcome, mydf %>% 
+    filter(Rank %in% "species") %>% 
+    transmute(tax_id = id, species, lineage))
+  
+  
+  }
+  
+  as_tibble(outcome) }
