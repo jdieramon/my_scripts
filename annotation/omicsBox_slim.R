@@ -34,23 +34,19 @@ genexport <- genexport %>%
 genexport %>% count(Annotation.GO.Category)
 
 # Sequences with GO terms from 3, 2, or 1 Functional Category  
-genexport %>% 
-  count(Sequence.Name, Annotation.GO.Category) %>% 
-  arrange(Sequence.Name) %>% 
-  count(Sequence.Name) %>% 
-  filter(n == 3)
 
-genexport %>% 
-  count(Sequence.Name, Annotation.GO.Category) %>% 
-  arrange(Sequence.Name) %>% 
-  count(Sequence.Name) %>% 
-  filter(n == 2)
+FC_by_seq <- function(i) {
+    #''' i, number of GOs
+  
+  genexport %>% 
+    count(Sequence.Name, Annotation.GO.Category) %>% 
+    arrange(Sequence.Name) %>% 
+    count(Sequence.Name) %>% 
+    filter(n == i)
+  
+}
 
-genexport %>% 
-  count(Sequence.Name, Annotation.GO.Category) %>% 
-  arrange(Sequence.Name) %>% 
-  count(Sequence.Name) %>% 
-  filter(n == 1)
+lapply(1:3, function(i) FC_by_seq(i))
 
 
 
