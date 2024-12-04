@@ -22,7 +22,7 @@ genexport <- read.delim("dat/generic_export")
 
 
 # Quick view
-genexport %>% count(Annotation.GO.Category)
+genexport %>% glimpse()
 
 # Filter out sequences without GO terms 
 genexport <- genexport %>% 
@@ -33,7 +33,7 @@ genexport <- genexport %>%
 # Number of  GO terms 
 genexport %>% count(Annotation.GO.Category)
 
-# Sequences with 3, 2, or 1 GO terms
+# Sequences with GO terms from 3, 2, or 1 Functional Category  
 genexport %>% 
   count(Sequence.Name, Annotation.GO.Category) %>% 
   arrange(Sequence.Name) %>% 
