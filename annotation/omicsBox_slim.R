@@ -116,7 +116,7 @@ add_slim <- function() {
     omics[!omics %in% slims_uniq]
     
     
-  } else {print("No need to update the `slim´ object. ")}
+  } else {cat("No need to update the `slim´ object.")}
 }
 
 add_slim()
