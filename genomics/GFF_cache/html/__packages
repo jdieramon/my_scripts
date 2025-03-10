@@ -1,0 +1,11 @@
+dplyr
+BiocGenerics
+S4Vectors
+IRanges
+GenomeInfoDb
+GenomicRanges
+rtracklayer
+tibble
+ggplot2
+stringr
+Gviz

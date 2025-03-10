@@ -38,28 +38,42 @@ hubCache(ah)
 
 ## search the hub 
 cicer <- query(ah, "Cicer arietinum")
-
+pissy <- query(ah, "Aphis gossypii")
+  
 # extract information
 cicer$dataprovider
 cicer$genome
 cicer$maintainer
 
+pissy$dataprovider
+pissy$genome
+pissy$maintainer
+
+
+
 # "AnnotationHub" object
 class(cicer)
+class(pissy)
 
 # retrieve (=download) the element
 cicer <- cicer[[1]]
+pissy <- pissy[[1]]
 
 #OrgDb object
 class(cicer)
 cicer
 
+class(pissy) 
+pissy 
+
 # accessing data :
 ## method columns
 columns(cicer)
+columns(pissy)
 
 #### method keytypes
 keytypes(cicer)
+keytypes(pissy)
 
 ## method keys
 head(keys(cicer, keytype = "GENENAME"))
@@ -67,6 +81,8 @@ head(keys(cicer, keytype = "ENTREZID"))
 head(keys(cicer, keytype = "SYMBOL"))
 head(keys(cicer, keytype = "SYMBOL", pattern = "ARF"))
 
+head(keys(pissy, keytype = "ENTREZID"))
+head(keys(pissy, keytype = "SYMBOL"))
 
 # method select
 select(cicer, keys = "101509359", keytype = "ENTREZID", 
@@ -74,6 +90,12 @@ select(cicer, keys = "101509359", keytype = "ENTREZID",
 
 select(cicer, keys = "LOC101509359", keytype = "ALIAS", 
        columns = c("GO", "CHR", "GENENAME"))
+
+select(pissy, keys = c("114118904", "114118905", "114118906"),
+       keytype = "ENTREZID", 
+       columns = c("GO", "SYMBOL"))
+
+
 
 
 library(dplyr)
