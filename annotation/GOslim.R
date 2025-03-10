@@ -1,5 +1,9 @@
 ## Read the ontologies 'bp' , 'mf', 'cc' and update it with new GO slims
 
+# Set wd()
+dir <- "/Users/jdieramon/Documents/coding/my_scripts/annotation"
+setwd(dir)
+
 # Load slim class object
 load("dat/slim.rda")
 
