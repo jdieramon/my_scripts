@@ -27,6 +27,7 @@ Load data and check content.
 
 ```r
 dat = read.csv2("data/Alnus_madresvs brinzales.csv")
+#dat = read.csv2("data/Alnus_madres vs brinzales_2x_3x_4x_homocigotos completos.csv")
 dat %>% tibble()
 ```
 
@@ -142,12 +143,6 @@ if(dat %>%
   } else {dat <- dat %>% select(-last_col())}
 ```
 
-Replace missing values with "-9" (STRUCTURE syntax)
-
-```r
-dat[is.na(dat)] = -9
-```
-
 Finally, an object containing only the loci data (in columns) will be created.  
 
 ```r
@@ -175,24 +170,24 @@ dat_pr %>% tibble()
 ```
 ## # A tibble: 276 × 64
 ##     AG01     X   X.1   X.2  AG05   X.3   X.4   X.5  AG09   X.6   X.7   X.8  AG10
-##    <dbl> <dbl> <dbl> <dbl> <int> <dbl> <dbl> <dbl> <int> <dbl> <dbl> <dbl> <int>
-##  1   134   146    -9    -9   148   159    -9    -9   250   254    -9    -9   216
-##  2   132    -9    -9    -9   141   155   157    -9   246   248   250    -9   218
-##  3   132    -9    -9    -9   141   146   157    -9   244   246   248    -9   218
-##  4   132    -9    -9    -9   146   151   155    -9   244   248   250   256   216
-##  5   132    -9    -9    -9   141   146    -9    -9   246    -9    -9    -9   218
-##  6   132   134    -9    -9   141   155    -9    -9   244   246   262    -9   216
-##  7   128   132   166    -9   141   148   155    -9   244   246   250    -9   218
-##  8   132    -9    -9    -9   141   148   155    -9   246   248    -9    -9   216
-##  9   134   135    -9    -9   151   159    -9    -9   250   250    -9    -9   216
-## 10   126   132    -9    -9   148   155   171    -9   246    -9    -9    -9   218
+##    <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int>
+##  1   134   146    NA    NA   148   159    NA    NA   250   254    NA    NA   216
+##  2   132    NA    NA    NA   141   155   157    NA   246   248   250    NA   218
+##  3   132    NA    NA    NA   141   146   157    NA   244   246   248    NA   218
+##  4   132    NA    NA    NA   146   151   155    NA   244   248   250   256   216
+##  5   132    NA    NA    NA   141   146    NA    NA   246    NA    NA    NA   218
+##  6   132   134    NA    NA   141   155    NA    NA   244   246   262    NA   216
+##  7   128   132   166    NA   141   148   155    NA   244   246   250    NA   218
+##  8   132    NA    NA    NA   141   148   155    NA   246   248    NA    NA   216
+##  9   134   135    NA    NA   151   159    NA    NA   250   250    NA    NA   216
+## 10   126   132    NA    NA   148   155   171    NA   246    NA    NA    NA   218
 ## # ℹ 266 more rows
-## # ℹ 51 more variables: X.9 <dbl>, X.10 <dbl>, X.11 <dbl>, AG13 <dbl>,
-## #   X.12 <dbl>, X.13 <dbl>, X.14 <dbl>, AG23 <dbl>, X.15 <dbl>, X.16 <dbl>,
-## #   X.17 <dbl>, AG25 <int>, X.18 <dbl>, X.19 <dbl>, X.20 <dbl>, AG27 <int>,
-## #   X.21 <dbl>, X.22 <dbl>, X.23 <dbl>, AG30 <int>, X.24 <dbl>, X.25 <dbl>,
-## #   X.26 <dbl>, AG35 <dbl>, X.27 <dbl>, X.28 <dbl>, X.29 <dbl>, A2 <int>,
-## #   X.30 <dbl>, X.31 <dbl>, X.32 <dbl>, A22 <int>, X.33 <dbl>, X.34 <dbl>, …
+## # ℹ 51 more variables: X.9 <int>, X.10 <int>, X.11 <lgl>, AG13 <int>,
+## #   X.12 <int>, X.13 <int>, X.14 <int>, AG23 <int>, X.15 <int>, X.16 <int>,
+## #   X.17 <lgl>, AG25 <int>, X.18 <int>, X.19 <int>, X.20 <int>, AG27 <int>,
+## #   X.21 <int>, X.22 <int>, X.23 <lgl>, AG30 <int>, X.24 <int>, X.25 <int>,
+## #   X.26 <int>, AG35 <int>, X.27 <int>, X.28 <int>, X.29 <int>, A2 <int>,
+## #   X.30 <int>, X.31 <lgl>, X.32 <lgl>, A22 <int>, X.33 <int>, X.34 <int>, …
 ```
 
 ## Build the matrix for polyploids
@@ -269,19 +264,19 @@ mydat %>% as_tibble()
 ```
 ## # A tibble: 1,104 × 16
 ##     AG01  AG05  AG09  AG10  AG13  AG23  AG25  AG27  AG30  AG35    A2   A22   A35
-##    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##    <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int>
 ##  1   134   148   250   216   251   356    93   101    99   196   142   161   228
-##  2   146   159   254   218   268   360    93   101   107   202    -9    -9    -9
-##  3    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9
-##  4    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9
+##  2   146   159   254   218   268   360    93   101   107   202    NA    NA    NA
+##  3    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+##  4    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 ##  5   132   141   246   218   251   356    93   101    97   184   142   159   224
-##  6    -9   155   248    -9   266    -9   105   103    99   200    -9   163   228
-##  7    -9   157   250    -9   270    -9    -9   105   103    -9    -9   167   230
-##  8    -9    -9    -9    -9   272    -9    -9    -9    -9    -9    -9   169    -9
+##  6    NA   155   248    NA   266    NA   105   103    99   200    NA   163   228
+##  7    NA   157   250    NA   270    NA    NA   105   103    NA    NA   167   230
+##  8    NA    NA    NA    NA   272    NA    NA    NA    NA    NA    NA   169    NA
 ##  9   132   141   244   218   262   356    93   101    97   181   142   159   224
-## 10    -9   146   246    -9   266   358    99   103    99   186    -9   163   226
+## 10    NA   146   246    NA   266   358    99   103    99   186    NA   163   226
 ## # ℹ 1,094 more rows
-## # ℹ 3 more variables: A37 <dbl>, A38 <dbl>, AG20 <dbl>
+## # ℹ 3 more variables: A37 <int>, A38 <int>, AG20 <int>
 ```
 
 Combine dataframe with the columns other than loci information.   
@@ -301,21 +296,40 @@ mydat %>% tibble()
 ```
 ## # A tibble: 1,104 × 19
 ##    sample population ploidia  AG01  AG05  AG09  AG10  AG13  AG23  AG25  AG27
-##    <chr>  <chr>      <chr>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##    <chr>  <chr>      <chr>   <int> <int> <int> <int> <int> <int> <int> <int>
 ##  1 T-481  Madres     2x        134   148   250   216   251   356    93   101
 ##  2 T-481  Madres     2x        146   159   254   218   268   360    93   101
-##  3 T-481  Madres     2x         -9    -9    -9    -9    -9    -9    -9    -9
-##  4 T-481  Madres     2x         -9    -9    -9    -9    -9    -9    -9    -9
+##  3 T-481  Madres     2x         NA    NA    NA    NA    NA    NA    NA    NA
+##  4 T-481  Madres     2x         NA    NA    NA    NA    NA    NA    NA    NA
 ##  5 T-482  Madres     4x        132   141   246   218   251   356    93   101
-##  6 T-482  Madres     4x         -9   155   248    -9   266    -9   105   103
-##  7 T-482  Madres     4x         -9   157   250    -9   270    -9    -9   105
-##  8 T-482  Madres     4x         -9    -9    -9    -9   272    -9    -9    -9
+##  6 T-482  Madres     4x         NA   155   248    NA   266    NA   105   103
+##  7 T-482  Madres     4x         NA   157   250    NA   270    NA    NA   105
+##  8 T-482  Madres     4x         NA    NA    NA    NA   272    NA    NA    NA
 ##  9 T-483  Madres     4x        132   141   244   218   262   356    93   101
-## 10 T-483  Madres     4x         -9   146   246    -9   266   358    99   103
+## 10 T-483  Madres     4x         NA   146   246    NA   266   358    99   103
 ## # ℹ 1,094 more rows
-## # ℹ 8 more variables: AG30 <dbl>, AG35 <dbl>, A2 <dbl>, A22 <dbl>, A35 <dbl>,
-## #   A37 <dbl>, A38 <dbl>, AG20 <dbl>
+## # ℹ 8 more variables: AG30 <int>, AG35 <int>, A2 <int>, A22 <int>, A35 <int>,
+## #   A37 <int>, A38 <int>, AG20 <int>
 ```
+
+Replace missing data with special value "-5" (STRUCTURE syntax)
+
+```r
+mydat <-  mydat %>% 
+  group_by(sample) %>% 
+  mutate(across(all_of(markers), 
+                ~ if (all(is.na(.))) -5 else .,
+                .names = "{.col}"))
+```
+
+
+Replace NA with special value "-9" (STRUCTURE syntax)
+
+```r
+mydat[is.na(mydat)] = -9
+```
+
+Export data 
 
 ```r
 write.csv(mydat, file = "res/dataset.csv", row.names = F)
@@ -324,44 +338,27 @@ write.csv(mydat, file = "res/dataset.csv", row.names = F)
 **Note**: This dataset should be accessible to the user for downloading.  
   
 
-STRUCTURE requires an specific format that is built in the next code : 
+Finally, build the STRUCTURE input file. STRUCTURE requires an specific format that is built in the next code : 
 
 ```r
-res = mydat %>% select(-3)
+res <-  mydat %>% select(-3)
 n_cols <- ncol(res)
-colnames(res) <- c("", "", rep("-9", n_cols - 2))
-res
+
+# Define header manually (without modifying 'res')
+col_names <- c("", "", rep("-9", ncol(res) - 2))
+
+# Open connection for writing
+#file_conn <- file("res/structure_input2025.txt", open = "wt")
+file_conn <- file("res/resto_no.txt", open = "wt")
+
+# Write header manually
+writeLines(paste(col_names, collapse = "\t"), con = file_conn)
+
+# Write data without header and without quotes
+write.table(res, file = file_conn,
+            quote = FALSE, sep = "\t", row.names = FALSE, col.names = FALSE)
+
+# Close conexion
+close(file_conn)
 ```
-
-```
-## # A tibble: 1,104 × 18
-##    ``    ``     `-9`  `-9`  `-9`  `-9`  `-9`  `-9`  `-9`  `-9`  `-9`  `-9`  `-9`
-##    <chr> <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-##  1 T-481 Madr…   134   148   250   216   251   356    93   101    99   196   142
-##  2 T-481 Madr…   146   159   254   218   268   360    93   101   107   202    -9
-##  3 T-481 Madr…    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9
-##  4 T-481 Madr…    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9    -9
-##  5 T-482 Madr…   132   141   246   218   251   356    93   101    97   184   142
-##  6 T-482 Madr…    -9   155   248    -9   266    -9   105   103    99   200    -9
-##  7 T-482 Madr…    -9   157   250    -9   270    -9    -9   105   103    -9    -9
-##  8 T-482 Madr…    -9    -9    -9    -9   272    -9    -9    -9    -9    -9    -9
-##  9 T-483 Madr…   132   141   244   218   262   356    93   101    97   181   142
-## 10 T-483 Madr…    -9   146   246    -9   266   358    99   103    99   186    -9
-## # ℹ 1,094 more rows
-## # ℹ 5 more variables: `-9` <dbl>, `-9` <dbl>, `-9` <dbl>, `-9` <dbl>,
-## #   `-9` <dbl>
-```
-
-
-Finally, build the STRUCTURE input file.   
-
-```r
-write.table(res, file = "res/structure_input2025.txt", 
-            quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE)
-```
-
-
-
-
-
 
